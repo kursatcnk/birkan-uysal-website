@@ -69,3 +69,44 @@
 })();
 
 
+// OZEL DUZELTMELER: PROJELER ALANINDA MODAL ACILAN KUTULAR
+(function(){
+  function bootProjectModals(){
+    if(typeof jQuery === 'undefined'){ return; }
+
+    var $ = jQuery;
+    var modalBox = $('.edina_tm_modalbox');
+    var closePopup = modalBox.find('.close');
+
+    $('.project_modal_trigger').off('click.projectModal').on('click.projectModal', function(e){
+      e.preventDefault();
+      var details = $(this).siblings('.project_modal_content').html();
+      if(!details){ return false; }
+      $('body').addClass('modal');
+      modalBox.addClass('opened');
+      var wrap = modalBox.find('.description_wrap');
+      wrap.html(details);
+      wrap.scrollTop(0);
+      return false;
+    });
+
+    closePopup.off('click.projectModal').on('click.projectModal', function(e){
+      e.preventDefault();
+      if(typeof edina_tm_close_modalbox === 'function'){
+        edina_tm_close_modalbox();
+      }else{
+        modalBox.removeClass('opened');
+        modalBox.find('.description_wrap').html('');
+        $('body').removeClass('modal');
+      }
+      return false;
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bootProjectModals);
+  }else{
+    bootProjectModals();
+  }
+})();
+

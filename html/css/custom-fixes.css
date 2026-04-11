@@ -257,3 +257,543 @@
 
 
 
+/* V5 DUZENLEMELER: HAKKIMDA, EGITIM VE YETENEKLER IYILESTIRMELERI */
+#about,
+#education,
+#service{
+  scroll-margin-top: 28px;
+}
+
+/* BASLIK ALTLARI */
+.edina_tm_about .about_title h3,
+.edina_tm_education .edina_tm_title h3,
+.edina_tm_services.skills_slider_mode .edina_tm_title h3{
+  position: relative;
+  display: inline-block;
+}
+.edina_tm_about .about_title h3:after,
+.edina_tm_education .edina_tm_title h3:after,
+.edina_tm_services.skills_slider_mode .edina_tm_title h3:after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 84px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(114,140,255,.95) 0%, rgba(255,255,255,.28) 100%);
+}
+
+/* HAKKIMDA */
+.edina_tm_about{
+  padding-top: 108px !important;
+  padding-bottom: 220px !important;
+}
+.edina_tm_about .content{
+  padding-top: 52px !important;
+  align-items: flex-start;
+}
+.edina_tm_about .leftpart .info{
+  margin-bottom: 46px !important;
+}
+.edina_tm_about .leftpart .info p{
+  max-width: 96% !important;
+  line-height: 1.72;
+}
+.edina_tm_about .my_skills{
+  margin-top: 4px;
+}
+.edina_tm_about .my_skills .title{
+  margin-bottom: 14px !important;
+}
+.edina_tm_about .desc{
+  max-width: 96% !important;
+  margin-bottom: 0 !important;
+}
+.edina_tm_about .wrapper.skill_text_grid{
+  padding-top: 28px !important;
+  gap: 18px;
+}
+.edina_tm_about .skill_text_list{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.edina_tm_about .skill_text_item{
+  min-height: 62px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(18,24,41,.96) 0%, rgba(11,17,31,.98) 100%);
+  box-shadow: 0 14px 32px rgba(0,0,0,.14);
+  color: #f4f7ff;
+  font-weight: 600;
+  letter-spacing: .1px;
+  position: relative;
+  overflow: hidden;
+}
+.edina_tm_about .skill_text_item:before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: rgba(255,255,255,.08);
+}
+.edina_tm_about .skill_text_item:hover{
+  transform: translateY(-2px);
+  border-color: rgba(114,140,255,.18);
+  box-shadow: 0 18px 36px rgba(0,0,0,.16), 0 0 0 1px rgba(114,140,255,.08);
+}
+.edina_tm_about .rightpart{
+  padding-left: 136px !important;
+}
+.edina_tm_about .rightpart .image{
+  padding-bottom: 26px;
+}
+.edina_tm_about .rightpart .image .main{
+  border-radius: 22px !important;
+  box-shadow: 0 26px 60px rgba(0,0,0,.22);
+}
+.edina_tm_about .experience{
+  width: 214px !important;
+  height: 214px !important;
+  left: -22px !important;
+  bottom: 16px !important;
+  background: linear-gradient(180deg, #3b5478 0%, #304767 100%) !important;
+  box-shadow: 0 18px 42px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.edina_tm_about .experience .info h3{
+  font-size: 40px !important;
+}
+.edina_tm_about .experience .info span{
+  font-size: 20px !important;
+}
+
+/* EGITIM */
+.edina_tm_education{
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  padding: 112px 0 112px;
+  position: relative;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(114,140,255,.08) 0%, rgba(114,140,255,0) 26%),
+    radial-gradient(circle at 86% 24%, rgba(80,184,255,.06) 0%, rgba(80,184,255,0) 24%);
+}
+.edina_tm_education .education_timeline_wrap{
+  margin-top: 54px !important;
+  padding-top: 0 !important;
+}
+.edina_tm_education .modern_timeline{
+  gap: 24px !important;
+  padding-top: 12px !important;
+  align-items: stretch !important;
+}
+.edina_tm_education .modern_timeline .timeline_track{
+  left: 18% !important;
+  right: 18% !important;
+  top: 156px !important;
+  height: 2px !important;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,.06) 0%, rgba(114,140,255,.34) 50%, rgba(255,255,255,.06) 100%) !important;
+  box-shadow: none !important;
+}
+.edina_tm_education .modern_timeline .timeline_item{
+  align-items: stretch !important;
+}
+.edina_tm_education .modern_timeline .timeline_item:before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 156px;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(180deg, rgba(114,140,255,.28) 0%, rgba(114,140,255,.04) 100%);
+}
+.edina_tm_education .modern_timeline .timeline_top{
+  min-height: 176px !important;
+  padding: 30px 28px 28px !important;
+  border-radius: 26px !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  background: linear-gradient(180deg, rgba(17,23,41,.97) 0%, rgba(9,14,26,.99) 100%) !important;
+  box-shadow: 0 18px 42px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.04) !important;
+  position: relative;
+  overflow: hidden;
+}
+.edina_tm_education .modern_timeline .timeline_top:before{
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 0;
+  width: 86px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(114,140,255,.85) 0%, rgba(255,255,255,.14) 100%);
+}
+.edina_tm_education .modern_timeline .timeline_item:hover .timeline_top{
+  transform: translateY(-6px) !important;
+  box-shadow: 0 24px 48px rgba(0,0,0,.22), 0 0 0 1px rgba(114,140,255,.12) !important;
+  border-color: rgba(114,140,255,.18) !important;
+}
+.edina_tm_education .modern_timeline .timeline_item h4{
+  font-size: 24px !important;
+  line-height: 1.35 !important;
+  margin: 0 !important;
+}
+.edina_tm_education .modern_timeline .timeline_subtitle{
+  display: block;
+  margin-top: 9px !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  font-weight: 600 !important;
+  color: rgba(255,255,255,.74) !important;
+}
+.edina_tm_education .modern_timeline .timeline_subtitle.strong{
+  color: rgba(255,255,255,.94) !important;
+}
+.edina_tm_education .modern_timeline .timeline_dot{
+  width: 18px !important;
+  height: 18px !important;
+  margin: 24px auto 18px !important;
+  border: 3px solid #0b1222 !important;
+  background: linear-gradient(180deg, #9eb2ff 0%, #7894ff 100%) !important;
+  box-shadow: 0 0 0 6px rgba(114,140,255,.12), 0 0 18px rgba(114,140,255,.18) !important;
+}
+.edina_tm_education .modern_timeline .timeline_bottom{
+  padding-top: 8px;
+}
+.edina_tm_education .modern_timeline .timeline_badge{
+  min-width: 128px !important;
+  height: 44px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(114,140,255,.08) 100%) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14) !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: .2px !important;
+}
+
+/* YETENEKLER */
+.edina_tm_services.skills_slider_mode{
+  padding: 112px 0 76px 0 !important;
+}
+.edina_tm_services.skills_slider_mode .service_list{
+  position: relative;
+  overflow: visible !important;
+  padding-top: 44px !important;
+}
+.edina_tm_services.skills_slider_mode .service_list:before,
+.edina_tm_services.skills_slider_mode .service_list:after{
+  display: none !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track{
+  gap: 20px !important;
+  padding: 10px 2px 20px !important;
+  margin-left: 0 !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li{
+  padding-left: 0 !important;
+  width: 248px !important;
+  min-width: 248px !important;
+  flex: 0 0 248px !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .list_inner{
+  min-height: 184px !important;
+  padding: 28px 24px !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  background: linear-gradient(180deg, rgba(17,23,41,.96) 0%, rgba(9,14,27,.99) 100%) !important;
+  box-shadow: 0 18px 42px rgba(0,0,0,.18) !important;
+  position: relative;
+  overflow: hidden;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .list_inner:before{
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 0;
+  width: 72px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(114,140,255,.85) 0%, rgba(255,255,255,.14) 100%);
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li:hover .list_inner{
+  transform: translateY(-5px);
+  border-color: rgba(114,140,255,.2) !important;
+  box-shadow: 0 24px 48px rgba(0,0,0,.22), 0 0 0 1px rgba(114,140,255,.08) !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .svg{
+  width: 44px !important;
+  height: 44px !important;
+  margin-bottom: 22px !important;
+  opacity: .88;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li h3{
+  font-size: 22px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .service_title{
+  margin-top: auto !important;
+}
+
+/* MOBIL */
+@media (max-width: 1200px){
+  .edina_tm_about{
+    padding-bottom: 180px !important;
+  }
+  .edina_tm_about .rightpart{
+    padding-left: 90px !important;
+  }
+  .edina_tm_about .experience{
+    width: 190px !important;
+    height: 190px !important;
+    left: -10px !important;
+    bottom: 10px !important;
+  }
+}
+
+@media (max-width: 1040px){
+  .edina_tm_about{
+    padding-bottom: 120px !important;
+  }
+  .edina_tm_about .content{
+    display: block !important;
+  }
+  .edina_tm_about .leftpart,
+  .edina_tm_about .rightpart{
+    width: 100% !important;
+  }
+  .edina_tm_about .rightpart{
+    padding-left: 0 !important;
+    margin-top: 60px !important;
+  }
+  .edina_tm_about .rightpart .image{
+    padding-bottom: 0 !important;
+  }
+  .edina_tm_about .experience{
+    left: 20px !important;
+    bottom: 20px !important;
+  }
+
+  .edina_tm_education .modern_timeline{
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+    padding-top: 0 !important;
+  }
+  .edina_tm_education .modern_timeline .timeline_track,
+  .edina_tm_education .modern_timeline .timeline_item:before{
+    display: none !important;
+  }
+  .edina_tm_education .modern_timeline .timeline_top{
+    min-height: auto !important;
+  }
+  .edina_tm_education .modern_timeline .timeline_dot{
+    margin: 18px auto 16px !important;
+  }
+}
+
+@media (max-width: 768px){
+  .edina_tm_about{
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+  }
+  .edina_tm_about .about_title h3,
+  .edina_tm_education .edina_tm_title h3,
+  .edina_tm_services.skills_slider_mode .edina_tm_title h3{
+    font-size: 48px !important;
+  }
+  .edina_tm_about .wrapper.skill_text_grid{
+    display: block !important;
+    gap: 0 !important;
+  }
+  .edina_tm_about .wrapper .left,
+  .edina_tm_about .wrapper .right{
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  .edina_tm_about .wrapper .right{
+    margin-top: 14px !important;
+  }
+  .edina_tm_about .skill_text_item{
+    min-height: 58px !important;
+    border-radius: 16px !important;
+  }
+  .edina_tm_about .experience{
+    width: 154px !important;
+    height: 154px !important;
+    left: 16px !important;
+    bottom: 16px !important;
+  }
+  .edina_tm_about .experience .info h3{
+    font-size: 30px !important;
+  }
+  .edina_tm_about .experience .info span{
+    font-size: 16px !important;
+  }
+
+  .edina_tm_education{
+    padding: 96px 0 96px !important;
+  }
+  .edina_tm_education .education_timeline_wrap{
+    margin-top: 44px !important;
+  }
+  .edina_tm_education .modern_timeline .timeline_top{
+    padding: 24px 20px 22px !important;
+    border-radius: 22px !important;
+  }
+  .edina_tm_education .modern_timeline .timeline_item h4{
+    font-size: 22px !important;
+  }
+  .edina_tm_education .modern_timeline .timeline_subtitle{
+    font-size: 15px !important;
+  }
+
+  .edina_tm_services.skills_slider_mode{
+    padding: 96px 0 70px !important;
+  }
+  .edina_tm_services.skills_slider_mode ul.skills_drag_track li{
+    width: 224px !important;
+    min-width: 224px !important;
+    flex-basis: 224px !important;
+  }
+  .edina_tm_services.skills_slider_mode ul.skills_drag_track li .list_inner{
+    min-height: 168px !important;
+    padding: 24px 20px !important;
+  }
+  .edina_tm_services.skills_slider_mode ul.skills_drag_track li h3{
+    font-size: 20px !important;
+  }
+}
+
+
+/* PROJELER: MODAL ACILAN ODAK KUTULARI */
+.edina_tm_portfolio{
+  padding-bottom: 120px !important;
+}
+.edina_tm_portfolio .project_focus_area{
+  margin-top: 54px;
+}
+.edina_tm_portfolio .project_focus_header{
+  margin-bottom: 24px;
+}
+.edina_tm_portfolio .project_focus_header h4{
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 1.35;
+  font-weight: 800;
+  color: #fff;
+}
+.edina_tm_portfolio .project_focus_header p{
+  max-width: 760px;
+  margin: 0;
+  color: rgba(255,255,255,.72);
+  line-height: 1.7;
+}
+.edina_tm_portfolio .project_focus_grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.edina_tm_portfolio .project_focus_item{
+  min-width: 0;
+}
+.edina_tm_portfolio .project_focus_button{
+  min-height: 140px;
+  padding: 28px 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(17,23,41,.96) 0%, rgba(9,14,27,.99) 100%);
+  box-shadow: 0 18px 42px rgba(0,0,0,.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.edina_tm_portfolio .project_focus_button:before{
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 0;
+  width: 78px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(114,140,255,.85) 0%, rgba(255,255,255,.14) 100%);
+}
+.edina_tm_portfolio .project_focus_button:hover{
+  transform: translateY(-5px);
+  border-color: rgba(114,140,255,.2);
+  box-shadow: 0 24px 48px rgba(0,0,0,.22), 0 0 0 1px rgba(114,140,255,.08);
+}
+.edina_tm_portfolio .project_focus_label{
+  display: block;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 800;
+  color: #fff;
+}
+.edina_tm_portfolio .project_focus_hint{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  color: rgba(255,255,255,.68);
+}
+.edina_tm_portfolio .project_focus_hint:after{
+  content: "+";
+  font-size: 18px;
+  line-height: 1;
+}
+.edina_tm_portfolio .project_modal_content{
+  display: none;
+}
+
+/* HAKKIMDA GORSEL KONUMLAMA DOKUNUSU */
+.edina_tm_about .rightpart .image .main{
+  background-position: center 24% !important;
+}
+
+@media (max-width: 1040px){
+  .edina_tm_portfolio .project_focus_grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px){
+  .edina_tm_portfolio{
+    padding-bottom: 96px !important;
+  }
+  .edina_tm_portfolio .project_focus_area{
+    margin-top: 40px;
+  }
+  .edina_tm_portfolio .project_focus_header h4{
+    font-size: 24px;
+  }
+  .edina_tm_portfolio .project_focus_button{
+    min-height: 124px;
+    padding: 24px 20px;
+    border-radius: 22px;
+  }
+  .edina_tm_portfolio .project_focus_label{
+    font-size: 21px;
+  }
+  .edina_tm_about .rightpart .image .main{
+    background-position: center 18% !important;
+  }
+}
+
+
