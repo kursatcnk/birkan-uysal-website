@@ -1086,3 +1086,40 @@ body.dark .edina_tm_modalbox .close .svg{
 }
 
 
+/* V7 HOTFIX: PROJELER BOLUMU LAYOUT STABILIZATION */
+.edina_tm_portfolio .container,
+.edina_tm_portfolio .project_focus_area,
+.edina_tm_portfolio .project_focus_grid{
+  width: 100%;
+  clear: both;
+}
+.edina_tm_portfolio .project_focus_area{
+  float: left;
+  display: block;
+}
+.edina_tm_portfolio .project_focus_grid{
+  float: left;
+  display: grid !important;
+  align-items: stretch;
+}
+.edina_tm_portfolio .project_focus_item{
+  width: 100%;
+  min-width: 0;
+}
+.edina_tm_portfolio .project_focus_button{
+  display: flex !important;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+.edina_tm_portfolio .project_focus_label,
+.edina_tm_portfolio .project_focus_excerpt{
+  width: 100%;
+}
+@media (max-width: 1200px){
+  .edina_tm_portfolio .project_focus_grid{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
