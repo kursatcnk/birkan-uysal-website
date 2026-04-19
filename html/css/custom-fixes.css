@@ -1123,3 +1123,131 @@ body.dark .edina_tm_modalbox .close .svg{
 }
 
 
+/* V8: PROJE KARTLARI ESIT YUKSEKLIK + ILETISIM SADELESTIRME */
+.edina_tm_portfolio .project_focus_grid{
+  align-items: stretch !important;
+}
+.edina_tm_portfolio .project_focus_item{
+  display: flex;
+}
+.edina_tm_portfolio .project_focus_button{
+  height: 310px;
+  min-height: 310px;
+  align-self: stretch;
+}
+.edina_tm_portfolio .project_focus_excerpt{
+  min-height: 88px;
+}
+.edina_tm_contact{
+  background: linear-gradient(180deg, rgba(8,12,24,1) 0%, rgba(6,10,20,1) 100%) !important;
+  padding: 112px 0 !important;
+}
+.edina_tm_contact .edina_tm_title p{
+  max-width: 620px;
+}
+.edina_tm_contact .contact_compact_info{
+  padding-top: 52px !important;
+  margin-bottom: 0 !important;
+}
+.edina_tm_contact .contact_compact_info .wrapper{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0 !important;
+}
+.edina_tm_contact .contact_compact_info .wrapper > li{
+  width: 100% !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+.edina_tm_contact .contact_info_card{
+  min-height: 168px;
+  padding: 30px 30px 28px !important;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(17,23,41,.97) 0%, rgba(8,13,25,.99) 100%) !important;
+  box-shadow: 0 20px 46px rgba(0,0,0,.2);
+  display: flex !important;
+  align-items: center;
+  gap: 22px;
+}
+.edina_tm_contact .contact_icon_wrap{
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(114,140,255,.18) 0%, rgba(114,140,255,.08) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 68px;
+}
+.edina_tm_contact .contact_icon_wrap .svg{
+  width: 28px;
+  height: 28px;
+  color: #fff;
+}
+.edina_tm_contact .contact_info_text h3{
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+}
+.edina_tm_contact .contact_info_text p,
+.edina_tm_contact .contact_info_text a{
+  margin: 0;
+  color: rgba(255,255,255,.74) !important;
+  font-size: 17px;
+  line-height: 1.7;
+  text-decoration: none;
+  word-break: break-word;
+}
+.edina_tm_contact .contact_info_text a:hover{
+  color: #ffffff !important;
+}
+@media (max-width: 1200px){
+  .edina_tm_portfolio .project_focus_button{
+    height: 290px;
+    min-height: 290px;
+  }
+  .edina_tm_portfolio .project_focus_excerpt{
+    min-height: 72px;
+  }
+}
+@media (max-width: 768px){
+  .edina_tm_portfolio .project_focus_button{
+    height: auto;
+    min-height: 220px;
+  }
+  .edina_tm_portfolio .project_focus_excerpt{
+    min-height: 0;
+  }
+  .edina_tm_contact{
+    padding: 96px 0 !important;
+  }
+  .edina_tm_contact .contact_compact_info .wrapper{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .edina_tm_contact .contact_info_card{
+    min-height: 144px;
+    padding: 24px 22px !important;
+    border-radius: 20px;
+    gap: 18px;
+  }
+  .edina_tm_contact .contact_icon_wrap{
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    flex-basis: 58px;
+  }
+  .edina_tm_contact .contact_info_text h3{
+    font-size: 21px;
+  }
+  .edina_tm_contact .contact_info_text p,
+  .edina_tm_contact .contact_info_text a{
+    font-size: 16px;
+  }
+}
+
+
