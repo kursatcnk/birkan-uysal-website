@@ -1251,3 +1251,199 @@ body.dark .edina_tm_modalbox .close .svg{
 }
 
 
+/* V9: GENEL KONTROL, HAKKIMDA GORSEL DUZELTME, BOLUM AYRIMI, YETENEKLER IYILESTIRME */
+.edina_tm_about,
+.edina_tm_services,
+.edina_tm_portfolio,
+.edina_tm_contact{
+  position: relative;
+  z-index: 1;
+  clear: both;
+}
+
+/* Hakkimda gorselini tam goster */
+.edina_tm_about .rightpart{
+  margin-top: -18px !important;
+}
+.edina_tm_about .rightpart .image{
+  max-width: 540px !important;
+  padding-bottom: 72px !important;
+  overflow: visible !important;
+}
+.edina_tm_about .rightpart .image .main{
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-color: #f3f3f3 !important;
+  border-radius: 26px !important;
+}
+.edina_tm_about .experience{
+  width: 170px !important;
+  height: 170px !important;
+  left: -20px !important;
+  bottom: -18px !important;
+  z-index: 3 !important;
+  box-shadow: 0 18px 40px rgba(0,0,0,.24) !important;
+}
+.edina_tm_about .experience .info h3{
+  font-size: 34px !important;
+  line-height: 1.05 !important;
+}
+.edina_tm_about .experience .info span{
+  font-size: 16px !important;
+  line-height: 1.15 !important;
+}
+
+/* Portfolio ve contact bolumleri birbirine tasmasin */
+.edina_tm_portfolio{
+  overflow: hidden;
+  padding-bottom: 110px !important;
+}
+.edina_tm_portfolio .container,
+.edina_tm_portfolio .project_focus_area,
+.edina_tm_portfolio .project_focus_grid{
+  float: none !important;
+  overflow: visible !important;
+}
+.edina_tm_portfolio .project_focus_area{
+  margin-top: 48px !important;
+}
+.edina_tm_contact{
+  clear: both !important;
+  isolation: isolate;
+  z-index: 2;
+  margin-top: 0 !important;
+}
+
+/* Yetenekler bolumunu daha premium gorunumlu grid yap */
+.edina_tm_services.skills_slider_mode{
+  padding: 112px 0 96px !important;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(114,140,255,.08) 0%, rgba(114,140,255,0) 26%),
+    radial-gradient(circle at 88% 22%, rgba(80,184,255,.06) 0%, rgba(80,184,255,0) 24%);
+}
+.edina_tm_services.skills_slider_mode .edina_tm_title p{
+  max-width: 720px;
+}
+.edina_tm_services.skills_slider_mode .service_list{
+  padding-top: 42px !important;
+  overflow: visible !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track{
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px !important;
+  overflow: visible !important;
+  padding: 6px 0 0 !important;
+  cursor: default !important;
+  user-select: auto !important;
+  scroll-snap-type: none !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li{
+  width: auto !important;
+  min-width: 0 !important;
+  flex: none !important;
+  padding-left: 0 !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .list_inner{
+  min-height: 170px !important;
+  height: 100%;
+  padding: 26px 22px 24px !important;
+  border-radius: 22px !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  background: linear-gradient(180deg, rgba(17,23,41,.97) 0%, rgba(8,13,25,.99) 100%) !important;
+  box-shadow: 0 18px 42px rgba(0,0,0,.16) !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .list_inner:after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(114,140,255,.12) 0%, rgba(114,140,255,0) 42%);
+  pointer-events: none;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li:hover .list_inner{
+  transform: translateY(-6px) !important;
+  border-color: rgba(114,140,255,.22) !important;
+  box-shadow: 0 26px 54px rgba(0,0,0,.2), 0 0 0 1px rgba(114,140,255,.08) !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .svg{
+  width: 42px !important;
+  height: 42px !important;
+  margin-bottom: 18px !important;
+  opacity: .95;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li h3{
+  font-size: 21px !important;
+  line-height: 1.35 !important;
+  font-weight: 800 !important;
+  letter-spacing: -.2px;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .service_title{
+  display: flex;
+  align-items: flex-end;
+  min-height: 62px;
+}
+
+@media (max-width: 1200px){
+  .edina_tm_about .rightpart{
+    margin-top: -6px !important;
+  }
+  .edina_tm_about .rightpart .image{
+    max-width: 500px !important;
+  }
+  .edina_tm_services.skills_slider_mode ul.skills_drag_track{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1040px){
+  .edina_tm_about .rightpart{
+    margin-top: 24px !important;
+  }
+  .edina_tm_about .rightpart .image{
+    max-width: 560px !important;
+    padding-bottom: 54px !important;
+  }
+  .edina_tm_about .experience{
+    width: 154px !important;
+    height: 154px !important;
+    left: 10px !important;
+    bottom: -16px !important;
+  }
+  .edina_tm_services.skills_slider_mode ul.skills_drag_track{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px){
+  .edina_tm_about .rightpart .image{
+    padding-bottom: 42px !important;
+  }
+  .edina_tm_about .experience{
+    width: 132px !important;
+    height: 132px !important;
+    left: 8px !important;
+    bottom: -12px !important;
+  }
+  .edina_tm_about .experience .info h3{
+    font-size: 26px !important;
+  }
+  .edina_tm_about .experience .info span{
+    font-size: 13px !important;
+  }
+  .edina_tm_services.skills_slider_mode{
+    padding: 96px 0 84px !important;
+  }
+  .edina_tm_services.skills_slider_mode ul.skills_drag_track{
+    grid-template-columns: 1fr;
+    gap: 18px !important;
+  }
+  .edina_tm_services.skills_slider_mode ul.skills_drag_track li .list_inner{
+    min-height: 142px !important;
+    padding: 22px 20px !important;
+  }
+  .edina_tm_services.skills_slider_mode ul.skills_drag_track li h3{
+    font-size: 19px !important;
+  }
+}
+
