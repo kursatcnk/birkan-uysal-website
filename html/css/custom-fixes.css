@@ -1447,3 +1447,86 @@ body.dark .edina_tm_modalbox .close .svg{
   }
 }
 
+/* V10: GORSEL, ILETISIM, SKILL ICON VE SCROLLSPY DUZELTMELERI */
+#contact{
+  scroll-margin-top: 28px;
+}
+
+.edina_tm_about .rightpart .image{
+  max-width: 520px !important;
+  padding-bottom: 56px !important;
+}
+.edina_tm_about .rightpart .image .main{
+  background-size: cover !important;
+  background-position: center 18% !important;
+  background-color: transparent !important;
+  border-radius: 28px !important;
+  box-shadow: 0 24px 60px rgba(0,0,0,.22) !important;
+}
+.edina_tm_about .rightpart .image img{
+  display: block;
+  width: 100%;
+  opacity: 0;
+}
+.edina_tm_about .rightpart .image:before{
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 34px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,.01) 100%);
+  z-index: -1;
+}
+
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .svg,
+.edina_tm_contact .contact_icon_wrap .svg{
+  color: #d7e0f4 !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .svg *,
+.edina_tm_contact .contact_icon_wrap .svg *{
+  stroke: currentColor !important;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .svg text,
+.edina_tm_contact .contact_icon_wrap .svg text{
+  fill: currentColor !important;
+  stroke: none !important;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .list_inner{
+  justify-content: flex-start;
+}
+.edina_tm_services.skills_slider_mode ul.skills_drag_track li .service_title{
+  min-height: 64px;
+  align-items: center;
+}
+
+.edina_tm_contact{
+  padding: 112px 0 120px !important;
+  min-height: 55vh;
+}
+.edina_tm_contact .extra_info.contact_compact_info{
+  margin-top: 48px !important;
+}
+
+@media (max-width: 1040px){
+  .edina_tm_about .rightpart .image{
+    max-width: 560px !important;
+  }
+  .edina_tm_contact{
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px){
+  .edina_tm_about .rightpart .image{
+    padding-bottom: 42px !important;
+  }
+  .edina_tm_about .rightpart .image .main{
+    background-position: center 14% !important;
+  }
+  .edina_tm_contact{
+    padding: 96px 0 96px !important;
+  }
+}

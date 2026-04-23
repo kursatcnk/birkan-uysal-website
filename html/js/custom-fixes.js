@@ -110,3 +110,77 @@
   }
 })();
 
+// OZEL DUZELTMELER: SOL MENUDE AKTIF BOLUMUN DOGRU GOSTERILMESI
+(function(){
+  var sectionIds = ['home', 'about', 'education', 'service', 'portfolio', 'contact'];
+
+  function setActive(id){
+    var navs = document.querySelectorAll('.anchor_nav');
+    navs.forEach(function(nav){
+      nav.querySelectorAll('.current').forEach(function(el){
+        el.classList.remove('current');
+      });
+      var links = nav.querySelectorAll('a[href="#' + id + '"]');
+      links.forEach(function(link){
+        var inner = link.closest('.list_inner');
+        if(inner){
+          inner.classList.add('current');
+        }else if(link.parentElement){
+          link.parentElement.classList.add('current');
+        }
+      });
+    });
+  }
+
+  function getActiveSection(){
+    var doc = document.documentElement;
+    var scrollTop = window.pageYOffset || doc.scrollTop || 0;
+    var viewportHeight = window.innerHeight || doc.clientHeight || 0;
+    var triggerLine = scrollTop + Math.max(220, viewportHeight * 0.35);
+
+    if(scrollTop + viewportHeight >= doc.scrollHeight - 24){
+      return 'contact';
+    }
+
+    var active = sectionIds[0];
+    sectionIds.forEach(function(id){
+      var section = document.getElementById(id);
+      if(section && section.offsetTop <= triggerLine){
+        active = id;
+      }
+    });
+
+    return active;
+  }
+
+  function updateActive(){
+    setActive(getActiveSection());
+  }
+
+  function bootScrollSpy(){
+    if(!document.querySelector('.anchor_nav')){ return; }
+
+    updateActive();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', updateActive);
+    window.addEventListener('load', function(){
+      setTimeout(updateActive, 120);
+    });
+
+    document.querySelectorAll('.anchor_nav a').forEach(function(link){
+      link.addEventListener('click', function(){
+        var href = link.getAttribute('href') || '';
+        if(href.charAt(0) === '#'){
+          setActive(href.substring(1));
+          setTimeout(updateActive, 700);
+        }
+      });
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bootScrollSpy);
+  }else{
+    bootScrollSpy();
+  }
+})();
