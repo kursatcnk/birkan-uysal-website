@@ -1,0 +1,51 @@
+@model BirkanSection<BirkanExperience>
+@{
+    ViewData["Title"] = "Deneyim";
+    ViewData["Lead"] = "İş tecrübeleri. En az bir kayıt olduğunda sitede Deneyim bölümü ve menü bağlantısı kendiliğinden açılır.";
+
+    async Task Item(BirkanExperience e)
+    {
+        <article class="birkan-item" data-birkan-item>
+            <partial name="_BirkanItemControls" model="@(string.IsNullOrEmpty(e.Company) ? "Yeni deneyim" : e.Company)" />
+            <div class="birkan-item-body birkan-item-with-media">
+                @BirkanField.Image("Şirket logosu", "Logo", e.Logo, "logo", rel: true)
+                <div class="birkan-grid-2">
+                    <div data-birkan-title-source>@BirkanField.Text("Şirket", "Company", e.Company, rel: true)</div>
+                    @BirkanField.Text("Görev", "Position", e.Position, rel: true, placeholder: "Makine Mühendisi")
+                    @BirkanField.Text("Başlangıç", "Start", e.Start, rel: true, placeholder: "Mart 2021")
+                    @BirkanField.Text("Bitiş", "End", e.End, rel: true, placeholder: "Devam ediyor")
+                    @BirkanField.Text("Konum", "Location", e.Location, rel: true, placeholder: "Ankara")
+                </div>
+            </div>
+            @BirkanField.Area("Açıklama", "Description", e.Description, rel: true, rows: 4)
+            <partial name="_BirkanStringList" model="@(("Highlights", "Öne çıkan işler", "Madde ekle", e.Highlights))" />
+        </article>
+    }
+}
+
+<form method="post" asp-action="Experience" class="birkan-form" data-birkan-form>
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Bölüm</h3></header>
+        <div class="birkan-grid-2">
+            @BirkanField.Text("Başlık", "Title", Model.Title)
+            @BirkanField.Text("Alt açıklama", "Description", Model.Description, hint: "Boş bırakılırsa sitede görünmez.")
+        </div>
+    </section>
+
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>İş tecrübeleri</h3></header>
+        @if (Model.Items.Count == 0)
+        {
+            <p class="birkan-empty" data-birkan-empty>Henüz deneyim eklenmedi. Eklediğiniz ilk kayıtla birlikte bölüm sitede görünür.</p>
+        }
+        <div class="birkan-repeater" data-birkan-repeater="Items">
+            <div class="birkan-repeater-list" data-birkan-list>
+                @foreach (var e in Model.Items) { await Item(e); }
+            </div>
+            <template data-birkan-template>@{ await Item(new BirkanExperience()); }</template>
+            <button type="button" class="birkan-btn birkan-btn-ghost" data-birkan-add>+ Deneyim ekle</button>
+        </div>
+    </section>
+
+    <partial name="_BirkanSaveBar" />
+</form>

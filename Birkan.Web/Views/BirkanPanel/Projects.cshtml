@@ -1,0 +1,68 @@
+@model BirkanSection<BirkanProject>
+@{
+    ViewData["Title"] = "Projeler";
+    ViewData["Lead"] = "Her proje sitede bir satır olarak görünür; satıra tıklanınca detay penceresi açılır.";
+
+    async Task Block(BirkanProjectBlock b)
+    {
+        <article class="birkan-item birkan-item-nested" data-birkan-item>
+            <partial name="_BirkanItemControls" model="@(string.IsNullOrEmpty(b.Heading) ? "Yeni blok" : b.Heading)" />
+            <div data-birkan-title-source>@BirkanField.Text("Blok başlığı", "Heading", b.Heading, rel: true)</div>
+            @BirkanField.Area("Metin", "Text", b.Text, rel: true, rows: 3)
+        </article>
+    }
+
+    async Task Item(BirkanProject p)
+    {
+        <article class="birkan-item" data-birkan-item>
+            <partial name="_BirkanItemControls" model="@(string.IsNullOrEmpty(p.Title) ? "Yeni proje" : p.Title)" />
+            <div class="birkan-grid-2">
+                <div data-birkan-title-source>@BirkanField.Text("Proje başlığı", "Title", p.Title, rel: true)</div>
+                @BirkanField.Text("Üst etiket", "Badge", p.Badge, rel: true)
+            </div>
+            @BirkanField.Area("Kısa özet (listede görünür)", "Excerpt", p.Excerpt, rel: true, rows: 2)
+            @BirkanField.Text("Detay düğmesi yazısı", "Hint", p.Hint, rel: true)
+
+            <details class="birkan-details" open="@(string.IsNullOrEmpty(p.Title))">
+                <summary>Detay penceresi</summary>
+                @BirkanField.Area("Giriş paragrafı", "Intro", p.Intro, rel: true, rows: 4)
+                @BirkanField.Image("Görsel", "Image", p.Image, "photo", rel: true, hint: "İsteğe bağlı; detay penceresinde başlığın altında görünür.")
+
+                <div class="birkan-field">
+                    <span class="birkan-field-label">Metin blokları</span>
+                    <div class="birkan-repeater" data-birkan-repeater="Blocks">
+                        <div class="birkan-repeater-list birkan-grid-2" data-birkan-list>
+                            @foreach (var b in p.Blocks) { await Block(b); }
+                        </div>
+                        <template data-birkan-template>@{ await Block(new BirkanProjectBlock()); }</template>
+                        <button type="button" class="birkan-btn birkan-btn-ghost birkan-btn-sm" data-birkan-add>+ Blok ekle</button>
+                    </div>
+                </div>
+
+                @BirkanField.Text("Liste başlığı", "ListTitle", p.ListTitle, rel: true)
+                <partial name="_BirkanStringList" model="@(("Highlights", "Liste maddeleri", "Madde ekle", p.Highlights))" />
+            </details>
+        </article>
+    }
+}
+
+<form method="post" asp-action="Projects" class="birkan-form" data-birkan-form>
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Bölüm</h3></header>
+        @BirkanField.Text("Başlık", "Title", Model.Title)
+        @BirkanField.Area("Açıklama", "Description", Model.Description, rows: 3)
+    </section>
+
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Proje alanları</h3></header>
+        <div class="birkan-repeater" data-birkan-repeater="Items">
+            <div class="birkan-repeater-list" data-birkan-list>
+                @foreach (var p in Model.Items) { await Item(p); }
+            </div>
+            <template data-birkan-template>@{ await Item(new BirkanProject { Badge = "Proje Alanı", Hint = "Detayları İncele", ListTitle = "Öne Çıkan Çalışmalar" }); }</template>
+            <button type="button" class="birkan-btn birkan-btn-ghost" data-birkan-add>+ Proje ekle</button>
+        </div>
+    </section>
+
+    <partial name="_BirkanSaveBar" />
+</form>

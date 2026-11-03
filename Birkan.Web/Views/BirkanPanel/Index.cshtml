@@ -1,0 +1,103 @@
+@model BirkanDashboard
+@{
+    ViewData["Title"] = "Karargâh";
+    var c = Model.Content;
+    var tr = new System.Globalization.CultureInfo("tr-TR");
+    var stats = new (string Label, int Count, string Action)[]
+    {
+        ("Eğitim", c.Education.Items.Count, "Education"),
+        ("Deneyim", c.Experience.Items.Count, "Experience"),
+        ("Yetenek", c.Skills.Items.Count, "Skills"),
+        ("Proje", c.Projects.Items.Count, "Projects"),
+        ("İletişim", c.Contact.Items.Count, "Contact")
+    };
+    var shortcuts = new (string Action, string Title, string Text)[]
+    {
+        ("General", "Genel ve Giriş", "Site başlığı, isim, unvan, logo, giriş fotoğrafı ve sosyal bağlantılar."),
+        ("About", "Hakkımda", "Tanıtım yazısı, uzmanlık alanları ve portre."),
+        ("Experience", "Deneyim", "İş tecrübesi ekleyin; şirket logosu, görev, tarih ve açıklama."),
+        ("Education", "Eğitim", "Okullar, fakülte, bölüm, yıl ve okul logosu."),
+        ("Skills", "Yetenekler", "Kullanılan araçlar ve ikonları."),
+        ("Projects", "Projeler", "Proje alanları, detay metinleri ve öne çıkan çalışmalar.")
+    };
+}
+
+<section class="birkan-hq-hero">
+    <div class="birkan-hq-hero-copy">
+        <p class="birkan-mono birkan-hq-date">@DateTime.Now.ToString("d MMMM yyyy, dddd", tr)</p>
+        <h2 class="birkan-hq-greeting">Hoş geldin, @(c.Site.Name.Split(' ')[0]).</h2>
+        <blockquote class="birkan-hq-quote">
+            <p>“@BirkanAtaturk.QuoteOfTheDay”</p>
+            <footer>Mustafa Kemal Atatürk</footer>
+        </blockquote>
+    </div>
+    <figure class="birkan-hq-hero-photo">
+        <img src="~/birkan-panel/img/birkan-panel-ataturk-kalpak.webp" alt="Mustafa Kemal Atatürk" />
+    </figure>
+</section>
+
+<section class="birkan-hq-stats">
+    @foreach (var s in stats)
+    {
+        <a class="birkan-hq-stat" asp-action="@s.Action">
+            <span class="birkan-hq-stat-count">@s.Count.ToString("00")</span>
+            <span class="birkan-mono">@s.Label</span>
+        </a>
+    }
+    <div class="birkan-hq-stat birkan-hq-stat-wide">
+        <span class="birkan-hq-stat-text">@(Model.LastSaved?.ToString("d MMMM yyyy, HH:mm", tr) ?? "Henüz kayıt yok")</span>
+        <span class="birkan-mono">Son kayıt · @Model.BackupCount yedek</span>
+    </div>
+</section>
+
+<div class="birkan-hq-grid">
+    <section class="birkan-card">
+        <header class="birkan-card-head">
+            <h3>Hızlı düzenleme</h3>
+        </header>
+        <div class="birkan-hq-shortcuts">
+            @foreach (var s in shortcuts)
+            {
+                <a class="birkan-hq-shortcut" asp-action="@s.Action">
+                    <strong>@s.Title</strong>
+                    <span>@s.Text</span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                </a>
+            }
+        </div>
+    </section>
+
+    <section class="birkan-card birkan-card-dark birkan-hq-chronology">
+        <header class="birkan-card-head">
+            <h3>Atatürk Kronolojisi</h3>
+            <span class="birkan-mono">1881 — 1938</span>
+        </header>
+        <ol class="birkan-hq-timeline">
+            @foreach (var (date, text) in BirkanAtaturk.Chronology)
+            {
+                <li>
+                    <span class="birkan-mono">@date</span>
+                    <p>@text</p>
+                </li>
+            }
+        </ol>
+    </section>
+</div>
+
+<section class="birkan-card birkan-hq-quotes">
+    <header class="birkan-card-head">
+        <h3>Atatürk'ten</h3>
+        <img src="~/birkan-panel/img/birkan-panel-ataturk-imza.png" alt="Atatürk'ün imzası" class="birkan-hq-quotes-signature" />
+    </header>
+    <ul>
+        @foreach (var q in BirkanAtaturk.Quotes)
+        {
+            <li>“@q”</li>
+        }
+    </ul>
+</section>
+
+<footer class="birkan-hq-foot">
+    <span class="birkan-mono">29 Ekim 1923 · Cumhuriyet'in @BirkanAtaturk.RepublicYear. yılı</span>
+    <span>Ne mutlu Türk'üm diyene!</span>
+</footer>

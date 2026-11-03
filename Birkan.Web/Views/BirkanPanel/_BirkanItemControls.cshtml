@@ -1,0 +1,16 @@
+@model string
+<header class="birkan-item-head">
+    <span class="birkan-item-handle birkan-mono" data-birkan-index></span>
+    <strong class="birkan-item-title" data-birkan-title>@Model</strong>
+    <div class="birkan-item-tools">
+        <button type="button" class="birkan-icon-btn" data-birkan-move="-1" aria-label="Yukarı taşı" title="Yukarı taşı">
+            <svg viewBox="0 0 16 16"><path d="M8 13V3M4 7l4-4 4 4" /></svg>
+        </button>
+        <button type="button" class="birkan-icon-btn" data-birkan-move="1" aria-label="Aşağı taşı" title="Aşağı taşı">
+            <svg viewBox="0 0 16 16"><path d="M8 3v10M4 9l4 4 4-4" /></svg>
+        </button>
+        <button type="button" class="birkan-icon-btn birkan-icon-btn-danger" data-birkan-remove aria-label="Sil" title="Sil">
+            <svg viewBox="0 0 16 16"><path d="M3 4.5h10M6.5 4.5V3h3v1.5M4.5 4.5l.7 8.5h5.6l.7-8.5" /></svg>
+        </button>
+    </div>
+</header>

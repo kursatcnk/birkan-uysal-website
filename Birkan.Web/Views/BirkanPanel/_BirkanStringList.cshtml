@@ -1,0 +1,27 @@
+@model (string Name, string Label, string AddLabel, List<string> Values)
+@* Tek satırlık metinlerden oluşan liste (uzmanlık alanları, öne çıkan çalışmalar gibi). *@
+<div class="birkan-field">
+    <span class="birkan-field-label">@Model.Label</span>
+    <div class="birkan-repeater birkan-repeater-compact" data-birkan-repeater="@Model.Name">
+        <div class="birkan-repeater-list" data-birkan-list>
+            @foreach (var value in Model.Values)
+            {
+                <div class="birkan-line" data-birkan-item>
+                    <input class="birkan-input" data-birkan-name="" value="@value" />
+                    <button type="button" class="birkan-icon-btn" data-birkan-move="-1" aria-label="Yukarı taşı"><svg viewBox="0 0 16 16"><path d="M8 13V3M4 7l4-4 4 4" /></svg></button>
+                    <button type="button" class="birkan-icon-btn" data-birkan-move="1" aria-label="Aşağı taşı"><svg viewBox="0 0 16 16"><path d="M8 3v10M4 9l4 4 4-4" /></svg></button>
+                    <button type="button" class="birkan-icon-btn birkan-icon-btn-danger" data-birkan-remove aria-label="Sil"><svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8" /></svg></button>
+                </div>
+            }
+        </div>
+        <template data-birkan-template>
+            <div class="birkan-line" data-birkan-item>
+                <input class="birkan-input" data-birkan-name="" value="" />
+                <button type="button" class="birkan-icon-btn" data-birkan-move="-1" aria-label="Yukarı taşı"><svg viewBox="0 0 16 16"><path d="M8 13V3M4 7l4-4 4 4" /></svg></button>
+                <button type="button" class="birkan-icon-btn" data-birkan-move="1" aria-label="Aşağı taşı"><svg viewBox="0 0 16 16"><path d="M8 3v10M4 9l4 4 4-4" /></svg></button>
+                <button type="button" class="birkan-icon-btn birkan-icon-btn-danger" data-birkan-remove aria-label="Sil"><svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8" /></svg></button>
+            </div>
+        </template>
+        <button type="button" class="birkan-btn birkan-btn-ghost birkan-btn-sm" data-birkan-add>+ @Model.AddLabel</button>
+    </div>
+</div>

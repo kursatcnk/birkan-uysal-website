@@ -1,0 +1,73 @@
+@model BirkanGeneralForm
+@{
+    ViewData["Title"] = "Genel ve Giriş";
+    ViewData["Lead"] = "Sitenin kimliği, menü adları ve ilk ekranda görünen giriş bölümü.";
+    var s = Model.Site;
+    var h = Model.Hero;
+}
+
+<form method="post" asp-action="General" class="birkan-form" data-birkan-form>
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Kimlik</h3></header>
+        <div class="birkan-grid-2">
+            @BirkanField.Text("Ad soyad", "Site.Name", s.Name)
+            @BirkanField.Text("Unvan", "Site.Role", s.Role, hint: "Giriş bölümünün üstünde küçük etiket olarak görünür.")
+            @BirkanField.Text("Tarayıcı sekmesi başlığı", "Site.Title", s.Title)
+            @BirkanField.Text("Arama motoru açıklaması", "Site.MetaDescription", s.MetaDescription)
+            @BirkanField.Image("Logo", "Site.Logo", s.Logo, "logo", hint: "Boş bırakılırsa menüde isim ve baş harfler görünür.")
+            @BirkanField.Image("Küçük portre", "Site.Avatar", s.Avatar, "photo")
+        </div>
+    </section>
+
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Giriş bölümü</h3></header>
+        <div class="birkan-grid-2">
+            @BirkanField.Text("Büyük başlık (isim)", "Hero.Name", h.Name)
+            @BirkanField.Image("Giriş fotoğrafı", "Hero.Photo", h.Photo, "photo", hint: "Geniş ekranda tam sayfa açılır; yatay ya da kare, en az 1800 piksel önerilir.")
+        </div>
+        @BirkanField.Area("Kısa tanıtım", "Hero.Text", h.Text, rows: 3)
+
+        <div class="birkan-field">
+            <span class="birkan-field-label">Sosyal bağlantılar</span>
+            <div class="birkan-repeater" data-birkan-repeater="Hero.Socials">
+                <div class="birkan-repeater-list" data-birkan-list>
+                    @foreach (var link in h.Socials)
+                    {
+                        <article class="birkan-item" data-birkan-item>
+                            <partial name="_BirkanItemControls" model="link.Label" />
+                            <div class="birkan-grid-2">
+                                @BirkanField.Text("Ad", "Label", link.Label, rel: true)
+                                @BirkanField.Text("Adres", "Url", link.Url, rel: true, type: "url", placeholder: "https://")
+                            </div>
+                        </article>
+                    }
+                </div>
+                <template data-birkan-template>
+                    <article class="birkan-item" data-birkan-item>
+                        <partial name="_BirkanItemControls" model="@("Yeni bağlantı")" />
+                        <div class="birkan-grid-2">
+                            @BirkanField.Text("Ad", "Label", "", rel: true)
+                            @BirkanField.Text("Adres", "Url", "", rel: true, type: "url", placeholder: "https://")
+                        </div>
+                    </article>
+                </template>
+                <button type="button" class="birkan-btn birkan-btn-ghost birkan-btn-sm" data-birkan-add>+ Bağlantı ekle</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Menü adları</h3></header>
+        <div class="birkan-grid-3">
+            @BirkanField.Text("Ana sayfa", "Site.Nav.Home", s.Nav.Home)
+            @BirkanField.Text("Hakkımda", "Site.Nav.About", s.Nav.About)
+            @BirkanField.Text("Eğitim", "Site.Nav.Education", s.Nav.Education)
+            @BirkanField.Text("Deneyim", "Site.Nav.Experience", s.Nav.Experience)
+            @BirkanField.Text("Yetenekler", "Site.Nav.Skills", s.Nav.Skills)
+            @BirkanField.Text("Projeler", "Site.Nav.Projects", s.Nav.Projects)
+            @BirkanField.Text("İletişim", "Site.Nav.Contact", s.Nav.Contact)
+        </div>
+    </section>
+
+    <partial name="_BirkanSaveBar" />
+</form>

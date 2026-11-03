@@ -1,0 +1,41 @@
+@model BirkanSection<BirkanContactItem>
+@{
+    ViewData["Title"] = "İletişim";
+    ViewData["Lead"] = "Sitenin kapanış bölümündeki iletişim bilgileri. Bağlantı boş bırakılırsa bilgi tıklanamaz düz metin olarak görünür.";
+
+    async Task Item(BirkanContactItem e)
+    {
+        <article class="birkan-item" data-birkan-item>
+            <partial name="_BirkanItemControls" model="@(string.IsNullOrEmpty(e.Label) ? "Yeni bilgi" : e.Label)" />
+            <div class="birkan-grid-3">
+                <div data-birkan-title-source>@BirkanField.Text("Etiket", "Label", e.Label, rel: true, placeholder: "E-Posta, Telefon, Konum…")</div>
+                @BirkanField.Text("Görünen değer", "Value", e.Value, rel: true)
+                @BirkanField.Text("Bağlantı", "Url", e.Url, rel: true, placeholder: "mailto:… / tel:… / https://…")
+            </div>
+            <input type="hidden" data-birkan-name="Type" value="@e.Type" />
+        </article>
+    }
+}
+
+<form method="post" asp-action="Contact" class="birkan-form" data-birkan-form>
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Bölüm</h3></header>
+        <div class="birkan-grid-2">
+            @BirkanField.Text("Başlık", "Title", Model.Title)
+            @BirkanField.Text("Açıklama", "Description", Model.Description)
+        </div>
+    </section>
+
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Bilgiler</h3></header>
+        <div class="birkan-repeater" data-birkan-repeater="Items">
+            <div class="birkan-repeater-list" data-birkan-list>
+                @foreach (var e in Model.Items) { await Item(e); }
+            </div>
+            <template data-birkan-template>@{ await Item(new BirkanContactItem()); }</template>
+            <button type="button" class="birkan-btn birkan-btn-ghost" data-birkan-add>+ Bilgi ekle</button>
+        </div>
+    </section>
+
+    <partial name="_BirkanSaveBar" />
+</form>

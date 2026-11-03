@@ -1,0 +1,39 @@
+@model BirkanAbout
+@{
+    ViewData["Title"] = "Hakkımda";
+    ViewData["Lead"] = "Tanıtım yazısı, portre ve uzmanlık alanları.";
+}
+
+<form method="post" asp-action="About" class="birkan-form" data-birkan-form>
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Tanıtım</h3></header>
+        <div class="birkan-grid-3">
+            @BirkanField.Text("Bölüm başlığı", "Title", Model.Title)
+            @BirkanField.Text("Selamlama", "Greeting", Model.Greeting)
+            @BirkanField.Text("Vurgulu isim", "GreetingName", Model.GreetingName)
+        </div>
+        @BirkanField.Area("Tanıtım yazısı", "Bio", Model.Bio, rows: 5)
+    </section>
+
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Portre</h3></header>
+        <div class="birkan-grid-2">
+            @BirkanField.Image("Portre fotoğrafı", "Photo", Model.Photo, "photo", hint: "Dikey (4:5) fotoğraf en iyi sonucu verir.")
+            <div>
+                @BirkanField.Text("Rozet üst satır", "BadgeTop", Model.BadgeTop)
+                @BirkanField.Text("Rozet alt satır", "BadgeBottom", Model.BadgeBottom)
+            </div>
+        </div>
+    </section>
+
+    <section class="birkan-card">
+        <header class="birkan-card-head"><h3>Uzmanlık alanları</h3></header>
+        <div class="birkan-grid-2">
+            @BirkanField.Text("Başlık", "ExpertiseTitle", Model.ExpertiseTitle)
+            @BirkanField.Area("Açıklama", "ExpertiseDescription", Model.ExpertiseDescription, rows: 2)
+        </div>
+        <partial name="_BirkanStringList" model="@(("Expertise", "Alanlar", "Alan ekle", Model.Expertise))" />
+    </section>
+
+    <partial name="_BirkanSaveBar" />
+</form>

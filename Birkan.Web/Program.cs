@@ -47,7 +47,8 @@ builder.Services.AddRateLimiter(o =>
         _ => new FixedWindowRateLimiterOptions { PermitLimit = 8, Window = TimeSpan.FromMinutes(1) }));
 });
 
-builder.Services.AddControllersWithViews();
+// Panel formlarında boş bırakılan alanlar geçerli sayılıyor; boşlar kaydetmeden önce BirkanSafe.Normalize ile "" yapılıyor.
+builder.Services.AddControllersWithViews(o => o.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 
 var app = builder.Build();
 
