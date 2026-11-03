@@ -1,8 +1,8 @@
 {
   "site": {
-    "title": "Birkan Uysal | Makine Mühendisi",
-    "metaDescription": "Birkan Uysal makine mühendisi kişisel web sitesi",
-    "name": "Birkan Uysal",
+    "title": "Birkan UYSAL | Makine Mühendisi",
+    "metaDescription": "Birkan UYSAL makine mühendisi kişisel web sitesi",
+    "name": "Birkan UYSAL",
     "role": "Makine Mühendisi",
     "logo": "",
     "avatar": "",
@@ -10,16 +10,19 @@
       "home": "Ana Sayfa",
       "about": "Hakkımda",
       "education": "Eğitim",
-      "experience": "Deneyim",
+      "experience": "Deneyimler",
       "skills": "Yetenekler",
       "projects": "Projeler",
       "contact": "İletişim"
     }
   },
   "hero": {
-    "name": "Birkan Uysal",
-    "text": "Makine tasarımı, teknik çizim ve üretim süreçlerine odaklanan çözüm odaklı bir makine mühendisi.",
+    "name": "Birkan UYSAL",
+    "specialty": "AR-GE ve Mekanik Tasarım",
+    "text": "",
     "photo": "/birkan-media/birkan-hero-1800.webp",
+    "cvLabel": "Özgeçmişimi İndir",
+    "cvFile": "/birkan-media/docs/birkan-uysal-cv.pdf",
     "socials": [
       {
         "label": "LinkedIn",
@@ -30,8 +33,8 @@
   "about": {
     "title": "Hakkımda",
     "greeting": "Merhaba, ben",
-    "greetingName": "Birkan Uysal",
-    "bio": "Makine mühendisliği alanında; mekanik tasarım, teknik çizim, üretim planlama ve süreç iyileştirme konularına odaklanıyorum. Her projede verimlilik, uygulanabilirlik ve teknik güvenilirliği ön planda tutarak işlevsel çözümler geliştirmeyi hedefliyorum.",
+    "greetingName": "Birkan UYSAL",
+    "bio": "Ar-Ge ve Mekanik Tasarım süreçlerinde; kavramsal tasarımdan üretime uzanan aşamalarda aktif rol alan bir makine mühendisiyim. Tasarım, analiz, teknik resim, montaj ve devreye alma deneyimlerimi projelere sorumluluk bilinciyle aktarıyorum.",
     "expertiseTitle": "Uzmanlık Alanlarım",
     "expertiseDescription": "Mühendislik projelerinde öne çıkan teknik yetkinliklerim ve çalışma alanlarım aşağıda yer almaktadır.",
     "expertise": [
@@ -53,10 +56,10 @@
     "description": "",
     "items": [
       {
-        "school": "Ankara Bahçelievler Deneme Lisesi",
-        "faculty": "",
-        "department": "",
-        "degree": "Lise",
+        "school": "Karadeniz Teknik Üniversitesi",
+        "faculty": "Mühendislik Fakültesi",
+        "department": "Makine Mühendisliği",
+        "degree": "Lisans",
         "years": "",
         "logo": ""
       },
@@ -69,19 +72,209 @@
         "logo": ""
       },
       {
-        "school": "Karadeniz Teknik Üniversitesi",
-        "faculty": "Mühendislik Fakültesi",
-        "department": "Makine Mühendisliği",
-        "degree": "Lisans",
+        "school": "Ankara Bahçelievler Deneme Lisesi",
+        "faculty": "",
+        "department": "",
+        "degree": "Lise",
         "years": "",
         "logo": ""
       }
     ]
   },
   "experience": {
-    "title": "Deneyim",
-    "description": "",
-    "items": []
+    "kicker": "Deneyim Alanı",
+    "metaNote": "Teknik Sorumluluklar",
+    "title": "Deneyimler",
+    "description": "Makine mühendisliği kariyerimde yer alan kurumlar, dönemler ve öne çıkan teknik sorumluluklar aşağıda özetlenmiştir.",
+    "items": [
+      {
+        "company": "Ateşçi",
+        "position": "Kıdemli Mekanik Tasarım Mühendisi",
+        "location": "",
+        "start": "2021",
+        "end": "2026",
+        "logo": "/birkan-media/experience/birkan-exp-atesci.webp",
+        "category": "Savunma Sanayi",
+        "description": "Kıdemli Mekanik Tasarım Mühendisi olarak mühimmat makineleri, kalibre dönüşümleri ve üretim hattı tasarımlarında görev aldım.",
+        "tags": [
+          "Optik Kontrol",
+          "Dolum \u0026 Pres",
+          "Konveyör Hatları"
+        ],
+        "intro": "Ateşçi Mühendislik, savunma sanayinde mühimmat makineleri ve mühimmat hattı üretimi yapan bir firmadır. Burada, 2021 - 2026 yılları arasında “Kıdemli Mekanik Tasarım Mühendisi” olarak görev aldım.",
+        "blocks": [
+          {
+            "heading": "Pozisyon",
+            "text": "2021 - 2026 yılları arasında Kıdemli Mekanik Tasarım Mühendisi olarak görev aldım."
+          },
+          {
+            "heading": "Odak Alanı",
+            "text": "Mühimmat makineleri, mühimmat hattı üretimi, kalibre dönüşümleri ve üretime yönelik mekanik tasarım süreçleri."
+          }
+        ],
+        "listTitle": "Başlıca Görev Aldığım Tasarımlar",
+        "highlights": [
+          "Kurşun Çekirdek Optik Kontrol Makinesi",
+          "Hadelenmiş Kovan Optik Kontrol Makinesi",
+          "Kovan ve Fişek Gözle Muayene Makinesi",
+          "12 Kalibre Tek Kurşun Dolum Makinesi",
+          "12,7x99 ve 12,7x108 Otomatik Mekanik Mastar Makinesi",
+          "Çift Etkili Pres",
+          "Rulo Açma, Doğrultma ve Sarma Makine Ünitesi",
+          "Hat Ürün Konveyörleri",
+          "Ürün Besleme Üniteleri"
+        ],
+        "note": "Her bir makine tasarımı için 9x19 - 5,56x45 - 7,62x51 - 12,7x99 gibi farklı kalibre dönüşümleri ve tasarımları mevcuttur."
+      },
+      {
+        "company": "ProMarin AŞ",
+        "position": "Mekanik Tasarım Mühendisi",
+        "location": "",
+        "start": "2019",
+        "end": "2021",
+        "logo": "/birkan-media/experience/birkan-exp-promarin.webp",
+        "category": "Üretim Odaklı Çözüm",
+        "description": "Mekanik Tasarım Mühendisi olarak LED armatür, soğutma ve özel ürün tasarım süreçlerinde görev aldım.",
+        "tags": [
+          "LED Armatür",
+          "Soğutma",
+          "Özel Makine"
+        ],
+        "intro": "Promarin AŞ, farklı mühendislik çözümleri sunan üretim odaklı bir firmadır. Burada 2019 - 2021 yılları arasında “Mekanik Tasarım Mühendisi” olarak görev aldım.",
+        "blocks": [
+          {
+            "heading": "Pozisyon",
+            "text": "2019 - 2021 yılları arasında Mekanik Tasarım Mühendisi olarak görev aldım."
+          },
+          {
+            "heading": "Odak Alanı",
+            "text": "LED aydınlatma armatürleri, sualtı aydınlatma çözümleri, soğutma kanatçıkları ve üretime yönelik özel makine tasarımları."
+          }
+        ],
+        "listTitle": "Başlıca Görev Aldığım Tasarımlar",
+        "highlights": [
+          "Dış Ortam LED Aydınlatma Armatür Tasarımı",
+          "Sualtı LED Aydınlatma Armatür Tasarımı",
+          "LED aydınlatmalar için Soğutma Kanatçık Tasarımı",
+          "Tematik Akvaryumlar için LED Aydınlatma ve Protein Skimmer Tasarımları",
+          "Kuluçka Makinesi Tasarımı ve İmalatı"
+        ],
+        "note": ""
+      },
+      {
+        "company": "ATC-Mateks",
+        "position": "Tasarım ve Üretim Mühendisi",
+        "location": "",
+        "start": "2017",
+        "end": "2019",
+        "logo": "/birkan-media/experience/birkan-exp-atc-mateks.webp",
+        "category": "OEM Ürün İmalatı",
+        "description": "Tasarım ve Üretim Mühendisi olarak ağır ekipman şanzıman, tork konvertörü ve üretim kontrol süreçlerinde görev aldım.",
+        "tags": [
+          "Tork Konvertör",
+          "Şanzıman",
+          "Üretim Kontrol"
+        ],
+        "intro": "ATC-Mateks, DANA SPICER (CLARK HURTH) ve ZF PASSAU ağır ekipman şanzıman ve tork konvertörleri için OEM ürün imalatı yapan bir firmadır. Burada 2017 - 2019 yılları arasında “Tasarım ve Üretim Mühendisi” olarak görev aldım.",
+        "blocks": [
+          {
+            "heading": "Pozisyon",
+            "text": "2017 - 2019 yılları arasında Tasarım ve Üretim Mühendisi olarak görev aldım."
+          },
+          {
+            "heading": "Odak Alanı",
+            "text": "Ağır ekipman şanzımanları, tork konvertörleri, OEM ürün imalatı, tasarım, teknik resim, malzeme seçimi ve üretim süreç takibi."
+          }
+        ],
+        "listTitle": "Başlıca Görev Aldığım Tasarımlar ve Üretim Sorumlulukları",
+        "highlights": [
+          "Tork Konvertör Tasarımı",
+          "Tork dişlileri ve bağlantı sacları tasarımı",
+          "Şanzıman pompaları ve regülatör valf tasarımı",
+          "Dişli, şaft, aktarım mili, balata ve disk tasarımları",
+          "Fellow, azdırma ve diş raspa tezgâhları ürün kontrolleri",
+          "CNC dik işlem ve torna tezgâhları ürün kontrolleri",
+          "Alüminyum, çelik, sfero ve pik kuru kum kalıp döküm kontrolleri",
+          "Satınalma, tedarik takibi ve fason iş yönetimi",
+          "Tasarım, teknik resim, malzeme seçimi ve iş emri oluşturma"
+        ],
+        "note": ""
+      },
+      {
+        "company": "Seçkin Makine",
+        "position": "Tasarım Üretim ve Kalite Kontrol Mühendisi",
+        "location": "",
+        "start": "2017",
+        "end": "1 Yıl",
+        "logo": "/birkan-media/experience/birkan-exp-seckin.webp",
+        "category": "Yedek Parça İmalatı",
+        "description": "Tasarım, üretim ve kalite kontrol mühendisliği kapsamında teknik resim, kalite ve üretim takip süreçlerinde görev aldım.",
+        "tags": [
+          "Teknik Resim",
+          "Kalite Kontrol",
+          "İş Emri"
+        ],
+        "intro": "Seçkin Makine, iş makinesi yedek parça imalâtı yapan bir firmadır. Burada 2017 yılında “Tasarım Üretim ve Kalite Kontrol Mühendisi” olarak görev aldım.",
+        "blocks": [
+          {
+            "heading": "Pozisyon",
+            "text": "2017 yılında Tasarım Üretim ve Kalite Kontrol Mühendisi olarak görev aldım."
+          },
+          {
+            "heading": "Odak Alanı",
+            "text": "İş makinesi yedek parçaları için teknik resim hazırlama, revizyon, kalite kontrol, üretim takibi ve ilgili iş emirlerinin yönetimi."
+          }
+        ],
+        "listTitle": "Başlıca Görev Aldığım Sorumluluklar",
+        "highlights": [
+          "Ürünlere (hidrolik silindir, piston, dişli rot, jant) ait teknik resimlerin oluşturulması",
+          "Mevcut teknik resimlerin revize edilerek standartlaştırılması",
+          "Parçaların üretim kontrolleri",
+          "Nihai parçaların kalite kontrolleri",
+          "Montajlı silindirlerin sızdırmazlık testleri",
+          "İş emri oluşturulması",
+          "Isıl işlem, kaplama ve boya kontrolleri"
+        ],
+        "note": ""
+      },
+      {
+        "company": "Pi Makina",
+        "position": "",
+        "location": "",
+        "start": "2012",
+        "end": "2013",
+        "logo": "/birkan-media/experience/birkan-exp-pi-makina.webp",
+        "category": "Staj Deneyimi",
+        "description": "Mühendislik ve işletme stajlarında imalat süreçleri, zaman etüdü, iş emri ve organizasyon başlıklarında görev aldım.",
+        "tags": [
+          "İmalat",
+          "Zaman Etüdü",
+          "Yönetim"
+        ],
+        "intro": "Pi Makina; beton santrali, beton finişeri, asfalt finişeri, transmikser, greyder, dozer, yükleyici, kazıcı yükleyici ve kule vinç gibi birçok yerli iş ve inşaat makinesini üreten bir firmadır. Burada 2012 yılında mühendislik, 2013 yılında ise işletme stajımı tamamladım.",
+        "blocks": [
+          {
+            "heading": "Staj Bilgisi",
+            "text": "2012 yılında mühendislik stajımı, 2013 yılında işletme stajımı tamamladım."
+          },
+          {
+            "heading": "Odak Alanı",
+            "text": "İmalat süreçleri, kaynaklı konstrüksiyon, talaşlı imalat, zaman etüdü, iş emri, organizasyon ve yönetim başlıkları."
+          }
+        ],
+        "listTitle": "Başlıca Görev Aldığım Sorumluluklar",
+        "highlights": [
+          "Kalıp, model ve maça ayrımı",
+          "Kaynaklı konstrüksiyon imalatı",
+          "Talaşlı imalat",
+          "Zaman etüdü",
+          "İş emri",
+          "Organizasyon şeması",
+          "Yönetim"
+        ],
+        "note": ""
+      }
+    ]
   },
   "skills": {
     "title": "Yetenekler",
@@ -127,13 +320,13 @@
   },
   "projects": {
     "title": "Projeler",
-    "description": "Çalıştığım proje alanlarını aşağıdaki kutulardan inceleyebilir, her başlık altında üstlendiğim görevleri ve mühendislik katkılarımı detaylı olarak görüntüleyebilirsiniz.",
+    "description": "Çalıştığım proje alanları; teknik sorumluluk, süreç katkısı ve mühendislik yaklaşımıyla birlikte özetlenmiştir.",
     "items": [
       {
         "badge": "Proje Alanı",
         "title": "Savunma Sanayi",
         "excerpt": "Mekanik tasarım, teknik dokümantasyon ve disiplinler arası koordinasyon odaklı proje katkıları.",
-        "hint": "Detayları İncele",
+        "hint": "İncele",
         "intro": "Savunma sanayi projelerinde mekanik tasarım süreçlerini teknik gereksinimler doğrultusunda ele alarak üretilebilir, güvenilir ve saha şartlarına uygun çözümler geliştirmeye odaklandım. Tasarım kararlarını fonksiyonellik, bakım kolaylığı, montaj uyumu ve revizyon yönetimi açısından değerlendirerek sürece katkı sağladım.",
         "image": "",
         "blocks": [
@@ -158,7 +351,7 @@
         "badge": "Proje Alanı",
         "title": "Özel Makine Tasarımı",
         "excerpt": "İhtiyaca özel makine ve mekanizma kurgularında modelleme, montaj detayları ve üretime uygun tasarım çalışmaları.",
-        "hint": "Detayları İncele",
+        "hint": "İncele",
         "intro": "Özel makine tasarımı projelerinde ihtiyaca özel sistem kurguları geliştirerek mekanik çözümün baştan sona şekillendirilmesinde aktif rol aldım. Tasarım sürecinde işlev, kompakt yerleşim, bakım erişilebilirliği ve üretim kolaylığı arasında dengeli bir yapı kurmaya önem verdim.",
         "image": "",
         "blocks": [
@@ -183,7 +376,7 @@
         "badge": "Proje Alanı",
         "title": "Mühendislik Çözümleri",
         "excerpt": "Analiz, süreç iyileştirme ve sahada uygulanabilir çözüm üretimi odaklı mühendislik desteği.",
-        "hint": "Detayları İncele",
+        "hint": "İncele",
         "intro": "Farklı proje ihtiyaçlarında mühendislik bakış açısıyla analiz, iyileştirme ve uygulama odaklı çözümler üreterek sürecin teknik tarafında etkin görev aldım. Hedefim problemi doğru tanımlayıp çözümü yalnızca teorik değil, sahada uygulanabilir hale getirmek oldu.",
         "image": "",
         "blocks": [
@@ -213,8 +406,8 @@
       {
         "type": "email",
         "label": "E-Posta",
-        "value": "info@birkanuysal.com",
-        "url": "mailto:info@birkanuysal.com"
+        "value": "info@birkanuysal.com.tr",
+        "url": "mailto:info@birkanuysal.com.tr"
       },
       {
         "type": "location",

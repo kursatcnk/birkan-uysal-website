@@ -7,7 +7,7 @@ public sealed class BirkanContent
     public BirkanHero Hero { get; set; } = new();
     public BirkanAbout About { get; set; } = new();
     public BirkanSection<BirkanEducation> Education { get; set; } = new();
-    public BirkanSection<BirkanExperience> Experience { get; set; } = new();
+    public BirkanExperienceSection Experience { get; set; } = new();
     public BirkanSection<BirkanSkill> Skills { get; set; } = new();
     public BirkanSection<BirkanProject> Projects { get; set; } = new();
     public BirkanSection<BirkanContactItem> Contact { get; set; } = new();
@@ -38,8 +38,11 @@ public sealed class BirkanNavLabels
 public sealed class BirkanHero
 {
     public string Name { get; set; } = "";
+    public string Specialty { get; set; } = "";
     public string Text { get; set; } = "";
     public string Photo { get; set; } = "";
+    public string CvLabel { get; set; } = "";
+    public string CvFile { get; set; } = "";
     public List<BirkanSocialLink> Socials { get; set; } = [];
 }
 
@@ -63,11 +66,18 @@ public sealed class BirkanAbout
     public string BadgeBottom { get; set; } = "";
 }
 
-public sealed class BirkanSection<T>
+public class BirkanSection<T>
 {
     public string Title { get; set; } = "";
     public string Description { get; set; } = "";
     public List<T> Items { get; set; } = [];
+}
+
+// Deneyim bölümünün üstündeki küçük etiket ve özet satırının son parçası; kurum sayısı ve yıl aralığı kayıtlardan hesaplanıyor.
+public sealed class BirkanExperienceSection : BirkanSection<BirkanExperience>
+{
+    public string Kicker { get; set; } = "";
+    public string MetaNote { get; set; } = "";
 }
 
 public sealed class BirkanEducation
@@ -88,8 +98,14 @@ public sealed class BirkanExperience
     public string Start { get; set; } = "";
     public string End { get; set; } = "";
     public string Logo { get; set; } = "";
+    public string Category { get; set; } = "";
     public string Description { get; set; } = "";
+    public List<string> Tags { get; set; } = [];
+    public string Intro { get; set; } = "";
+    public List<BirkanProjectBlock> Blocks { get; set; } = [];
+    public string ListTitle { get; set; } = "";
     public List<string> Highlights { get; set; } = [];
+    public string Note { get; set; } = "";
 }
 
 public sealed class BirkanSkill
