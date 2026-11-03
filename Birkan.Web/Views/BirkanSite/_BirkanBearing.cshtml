@@ -1,0 +1,38 @@
+@* Giriş bölümündeki rulman çizimi: ön görünüş, eksen çizgileri ve ölçülerle teknik resim gibi çiziliyor. *@
+@{
+    const double cx = 260, cy = 260;
+    const int balls = 11;
+}
+<svg class="birkan-bearing" viewBox="0 0 520 520" aria-hidden="true" focusable="false">
+    <g class="birkan-bearing-axes">
+        <line x1="40" y1="260" x2="480" y2="260" />
+        <line x1="260" y1="40" x2="260" y2="480" />
+    </g>
+    <g class="birkan-bearing-body">
+        <circle cx="260" cy="260" r="180" />
+        <circle cx="260" cy="260" r="156" />
+        <circle cx="260" cy="260" r="96" />
+        <circle cx="260" cy="260" r="72" />
+        <circle cx="260" cy="260" r="126" class="birkan-bearing-pitch" />
+        @for (var i = 0; i < balls; i++)
+        {
+            var a = i * 2 * Math.PI / balls - Math.PI / 2;
+            var x = cx + 126 * Math.Cos(a);
+            var y = cy + 126 * Math.Sin(a);
+            <circle cx="@x.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)" cy="@y.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)" r="22" />
+        }
+    </g>
+    <g class="birkan-bearing-dims">
+        <line x1="80" y1="28" x2="440" y2="28" />
+        <line x1="80" y1="20" x2="80" y2="250" class="birkan-bearing-ext" />
+        <line x1="440" y1="20" x2="440" y2="250" class="birkan-bearing-ext" />
+        <path d="M80 28l10-4v8zM440 28l-10-4v8z" class="birkan-bearing-arrow" />
+        <text x="260" y="20">Ø360</text>
+
+        <line x1="188" y1="498" x2="332" y2="498" />
+        <line x1="188" y1="270" x2="188" y2="506" class="birkan-bearing-ext" />
+        <line x1="332" y1="270" x2="332" y2="506" class="birkan-bearing-ext" />
+        <path d="M188 498l10-4v8zM332 498l-10-4v8zM188 498z" class="birkan-bearing-arrow" />
+        <text x="260" y="490">Ø144</text>
+    </g>
+</svg>

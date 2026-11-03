@@ -1,185 +1,328 @@
-/* Birkan Uysal — site stilleri */
+/* Birkan Uysal — site stilleri
+   Koyu grafit giriş ve kapanış, arada sıcak kâğıt tonunda içerik. Vurgu rengi turuncu, az ve yerinde kullanılıyor.
+   Girişteki rulman çizimi makine mühendisliğine selam veriyor; teknik resim gibi ince çizgilerle çiziliyor. */
 
 :root {
-  --birkan-dark: #1b1d1f;
-  --birkan-bg: #f4f3f0;
-  --birkan-card: #ffffff;
-  --birkan-text: #1f2124;
-  --birkan-muted: #62666b;
-  --birkan-line: #dcdad5;
-  --birkan-accent: #d9531e;
-  --birkan-accent-dark: #b8441a;
-  --birkan-font: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --birkan-width: 1080px;
+  --birkan-graphite: #121314;
+  --birkan-graphite-2: #1b1c1e;
+  --birkan-paper: #efece6;
+  --birkan-paper-2: #e6e2db;
+  --birkan-ink: #141516;
+  --birkan-ink-2: #3b3d40;
+  --birkan-muted: #75777a;
+  --birkan-line: #d3cec5;
+  --birkan-line-dark: rgba(239, 236, 230, 0.12);
+  --birkan-on-dark: #efece6;
+  --birkan-on-dark-2: #a3a3a0;
+  --birkan-accent: #e0612b;
+  --birkan-accent-deep: #c2501f;
+
+  --birkan-font: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --birkan-width: 1320px;
+  --birkan-gutter: clamp(20px, 4.5vw, 72px);
+  --birkan-ease: cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--birkan-bg);
-  color: var(--birkan-text);
+  background: var(--birkan-paper);
+  color: var(--birkan-ink);
   font-family: var(--birkan-font);
   font-size: 17px;
   line-height: 1.65;
+  font-feature-settings: "ss01";
+  -webkit-font-smoothing: antialiased;
 }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
+::selection { background: var(--birkan-accent); color: #fff; }
+:focus-visible { outline: 2px solid var(--birkan-accent); outline-offset: 3px; }
 
-img { max-width: 100%; display: block; }
-a { color: var(--birkan-accent-dark); }
-a:hover { color: var(--birkan-text); }
-h1, h2, h3, h4 { line-height: 1.25; font-weight: 600; }
-p { margin: 0 0 1em; }
-
-.birkan-shell { max-width: var(--birkan-width); margin: 0 auto; padding: 0 24px; }
+.birkan-shell { max-width: var(--birkan-width); margin: 0 auto; padding: 0 var(--birkan-gutter); }
 .birkan-muted { color: var(--birkan-muted); }
 
-/* Üst menü */
-.birkan-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--birkan-dark);
-  color: #fff;
-}
-.birkan-navbar-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-.birkan-navbar-name { color: #fff; text-decoration: none; font-weight: 600; font-size: 17px; }
-.birkan-navbar-name:hover { color: #fff; }
-.birkan-navbar-links { display: flex; gap: 22px; }
-.birkan-navbar-links a { color: #c9cacc; text-decoration: none; font-size: 15px; padding: 18px 0; border-bottom: 2px solid transparent; }
-.birkan-navbar-links a:hover,
-.birkan-navbar-links a.birkan-is-active { color: #fff; border-bottom-color: var(--birkan-accent); }
-.birkan-navbar-toggle { display: none; background: none; border: 0; width: 40px; height: 40px; padding: 0; cursor: pointer; position: relative; }
-.birkan-navbar-toggle span { position: absolute; left: 9px; right: 9px; height: 2px; background: #fff; }
-.birkan-navbar-toggle span:first-child { top: 15px; }
-.birkan-navbar-toggle span:last-child { top: 23px; }
-
-/* Giriş */
-.birkan-hero { background: var(--birkan-dark); color: #fff; padding: 56px 0 64px; }
-.birkan-hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 48px; }
-.birkan-hero-text { max-width: 560px; }
-.birkan-hero h1 { font-size: 44px; margin: 0 0 6px; }
-.birkan-hero-role { color: var(--birkan-accent); font-weight: 500; font-size: 19px; margin-bottom: 20px; }
-.birkan-hero-intro { color: #d4d5d7; font-size: 18px; }
-.birkan-hero-links { margin: 24px 0 0; }
-.birkan-link-button {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 4px;
+/* ---- Düğmeler ve bağlantılar ---- */
+.birkan-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 26px;
+  border-radius: 2px;
   background: var(--birkan-accent);
   color: #fff;
-  text-decoration: none;
+  font-size: 16px;
   font-weight: 500;
-  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.3s var(--birkan-ease);
 }
-.birkan-link-button:hover { background: var(--birkan-accent-dark); color: #fff; }
-.birkan-hero-photo {
-  width: 300px;
-  height: 375px;
-  object-fit: cover;
-  object-position: 52% 30%;
-  border-radius: 4px;
-  filter: grayscale(1) contrast(1.15);
-  flex: none;
+.birkan-btn:hover { background: var(--birkan-accent-deep); }
+.birkan-link {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat;
+  padding-bottom: 3px;
+  transition: background-size 0.4s var(--birkan-ease), color 0.3s;
 }
+.birkan-link:hover { color: var(--birkan-accent); background-size: 0 1px; }
 
-/* Bölümler: solda başlık, sağda içerik */
-.birkan-section { padding: 56px 0; border-bottom: 1px solid var(--birkan-line); }
-.birkan-row { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 40px; }
-.birkan-row-title { font-size: 22px; margin: 0; padding-top: 2px; }
-.birkan-row-title::after { content: ""; display: block; width: 32px; height: 3px; background: var(--birkan-accent); margin-top: 10px; }
-.birkan-subtitle { font-size: 18px; margin: 36px 0 6px; }
+/* ---- Üst menü: girişte şeffaf, kaydırınca grafit ---- */
+.birkan-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  color: var(--birkan-on-dark);
+  transition: background 0.4s var(--birkan-ease), box-shadow 0.4s;
+}
+.birkan-navbar.birkan-is-scrolled { background: rgba(18, 19, 20, 0.96); box-shadow: 0 1px 0 var(--birkan-line-dark); }
+.birkan-navbar-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.birkan-navbar-name { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; }
+.birkan-navbar-links { display: flex; gap: 30px; }
+.birkan-navbar-links a { position: relative; font-size: 15px; color: var(--birkan-on-dark-2); text-decoration: none; padding: 6px 0; transition: color 0.3s; }
+.birkan-navbar-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--birkan-accent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--birkan-ease); }
+.birkan-navbar-links a:hover,
+.birkan-navbar-links a.birkan-is-active { color: var(--birkan-on-dark); }
+.birkan-navbar-links a.birkan-is-active::after { transform: scaleX(1); }
+.birkan-navbar-toggle { display: none; width: 44px; height: 44px; position: relative; }
+.birkan-navbar-toggle span { position: absolute; left: 11px; right: 11px; height: 1.5px; background: var(--birkan-on-dark); transition: transform 0.35s var(--birkan-ease); }
+.birkan-navbar-toggle span:first-child { top: 18px; }
+.birkan-navbar-toggle span:last-child { top: 25px; }
+.birkan-navbar-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
+.birkan-navbar-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+
+/* ---- Giriş ---- */
+.birkan-hero { background: var(--birkan-graphite); color: var(--birkan-on-dark); padding: 150px 0 110px; overflow: hidden; }
+.birkan-hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.birkan-hero-meta { display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 15px; color: var(--birkan-on-dark-2); margin-bottom: 30px; }
+.birkan-hero-meta span:first-child { color: var(--birkan-accent); }
+.birkan-hero-meta span + span::before { content: ""; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--birkan-on-dark-2); margin-right: 26px; vertical-align: middle; transform: translateY(-2px); }
+.birkan-hero-name { font-size: clamp(56px, 7.4vw, 112px); font-weight: 500; line-height: 0.96; letter-spacing: -0.045em; }
+.birkan-hero-name span { display: block; }
+.birkan-hero-name span:nth-child(2) { color: var(--birkan-on-dark-2); }
+.birkan-hero-intro { max-width: 470px; margin-top: 34px; font-size: 19px; line-height: 1.6; color: #c9c8c4; }
+.birkan-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 32px; margin-top: 42px; }
+
+/* Rulman çizimi portrenin sol arkasında; merkezi portrenin sol kenarına denk geliyor. */
+.birkan-hero-visual { position: relative; display: grid; justify-items: end; align-items: center; min-height: 560px; }
+.birkan-bearing { position: absolute; width: 100%; max-width: 560px; left: 0; top: 50%; transform: translate(-22%, -50%); overflow: visible; }
+.birkan-bearing line, .birkan-bearing circle, .birkan-bearing path { fill: none; stroke: #55585b; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.birkan-bearing-axes line { stroke: var(--birkan-accent); stroke-dasharray: 18 5 3 5; opacity: 0.55; }
+.birkan-bearing-pitch { stroke-dasharray: 3 6; }
+.birkan-bearing-ext { opacity: 0.6; }
+.birkan-bearing .birkan-bearing-arrow { fill: #4a4c4f; stroke: none; }
+.birkan-bearing text { fill: #6a6c6f; font-family: var(--birkan-font); font-size: 13px; text-anchor: middle; letter-spacing: 0.04em; }
+.birkan-bearing-body circle { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: birkan-draw 2.4s var(--birkan-ease) forwards; }
+.birkan-bearing-body circle:nth-child(n + 6) { animation-delay: 0.6s; animation-duration: 1.6s; }
+@keyframes birkan-draw { to { stroke-dashoffset: 0; } }
+
+/* Portre: sıcak tonlu siyah-beyaz, ince tane. Panelden yüklenen fotoğraf da aynı işlemi alıyor. */
+.birkan-portrait { position: relative; width: min(100%, 400px); aspect-ratio: 4 / 5; overflow: hidden; background: var(--birkan-graphite-2); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.7); }
+.birkan-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 52% 32%; filter: grayscale(1) contrast(1.12) brightness(0.98); }
+.birkan-portrait::before { content: ""; position: absolute; inset: 0; z-index: 1; background: #6b4a2f; mix-blend-mode: soft-light; opacity: 0.45; pointer-events: none; }
+.birkan-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.birkan-portrait figcaption { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; padding: 14px 16px; font-size: 14px; color: #fff; background: linear-gradient(transparent, rgba(0, 0, 0, 0.55)); }
+.birkan-portrait-small { width: 240px; margin-top: 36px; box-shadow: none; }
+
+/* ---- Bölümler ---- */
+.birkan-section { padding: clamp(96px, 12vw, 168px) 0; }
+.birkan-section-tint { background: var(--birkan-paper-2); }
+.birkan-title { font-size: clamp(36px, 3.6vw, 52px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; }
+.birkan-head { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 40px; align-items: end; margin-bottom: clamp(48px, 6vw, 80px); }
+.birkan-head p { max-width: 560px; font-size: 18px; }
 
 /* Hakkımda */
-.birkan-about { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 32px; align-items: start; }
-.birkan-about-greeting { font-size: 20px; }
-.birkan-about-photo { margin: 0; }
-.birkan-about-photo img { width: 220px; height: 275px; object-fit: cover; object-position: 52% 30%; border-radius: 4px; filter: grayscale(1) contrast(1.15); }
-.birkan-about-photo figcaption { margin-top: 8px; font-size: 14px; color: var(--birkan-muted); }
+.birkan-about-top { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 40px; align-items: start; padding-bottom: clamp(40px, 5vw, 64px); border-bottom: 1px solid var(--birkan-line); }
+.birkan-about-lead { font-size: clamp(30px, 3.2vw, 46px); line-height: 1.12; letter-spacing: -0.03em; font-weight: 400; color: var(--birkan-ink-2); }
+.birkan-about-lead em { font-style: normal; color: var(--birkan-ink); font-weight: 500; }
+.birkan-about-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 40px; padding-top: clamp(40px, 5vw, 64px); }
+.birkan-about-text p { max-width: 460px; font-size: 18px; line-height: 1.7; color: var(--birkan-ink-2); }
+.birkan-expertise h3 { font-size: 21px; font-weight: 500; letter-spacing: -0.01em; }
+.birkan-expertise > p { margin-top: 8px; max-width: 520px; }
+.birkan-expertise ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; margin-top: 28px; border-top: 1px solid var(--birkan-ink); }
+.birkan-expertise li { position: relative; padding: 15px 0 15px 22px; border-bottom: 1px solid var(--birkan-line); font-size: 17px; }
+.birkan-expertise li::before { content: ""; position: absolute; left: 0; top: 50%; width: 8px; height: 1px; background: var(--birkan-accent); }
 
-/* Listeler */
-.birkan-list { margin: 12px 0 0; padding-left: 20px; }
-.birkan-list li { margin-bottom: 6px; }
-.birkan-list li::marker { color: var(--birkan-accent); }
-.birkan-list-2 { columns: 2; column-gap: 40px; }
-.birkan-list-2 li { break-inside: avoid; }
+/* Eğitim */
+.birkan-timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: 1px solid var(--birkan-ink); }
+.birkan-timeline li { position: relative; padding: 32px 32px 8px 0; }
+.birkan-timeline li + li { padding-left: 32px; border-left: 1px solid var(--birkan-line); }
+.birkan-timeline li::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: var(--birkan-accent); }
+.birkan-timeline li + li::before { left: -4px; }
+.birkan-timeline-degree { font-size: 14px; color: var(--birkan-accent-deep); font-weight: 500; margin-bottom: 18px; }
+.birkan-timeline-degree span { color: var(--birkan-muted); font-weight: 400; margin-left: 10px; }
+.birkan-timeline-logo { height: 42px; width: auto; margin-bottom: 18px; }
+.birkan-timeline h3 { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 10px; }
+.birkan-timeline p { font-size: 16px; }
 
-/* Eğitim ve deneyim satırları */
-.birkan-entries { list-style: none; margin: 0; padding: 0; }
-.birkan-entry { display: flex; gap: 20px; padding: 18px 0; border-top: 1px solid var(--birkan-line); }
-.birkan-entry:first-child { border-top: 0; padding-top: 0; }
-.birkan-entry-logo { width: 48px; height: 48px; object-fit: contain; flex: none; }
-.birkan-entry-main { flex: 1; min-width: 0; }
-.birkan-entry-main h3 { font-size: 18px; margin: 0 0 4px; }
-.birkan-entry-main p { margin: 0; color: var(--birkan-muted); }
-.birkan-entry-main .birkan-entry-text { margin-top: 10px; color: var(--birkan-text); }
-.birkan-entry-side { display: flex; flex-direction: column; align-items: flex-end; text-align: right; font-size: 15px; white-space: nowrap; }
+/* Deneyim */
+.birkan-jobs { border-top: 1px solid var(--birkan-ink); }
+.birkan-job { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--birkan-line); }
+.birkan-job-side p { font-size: 16px; }
+.birkan-job-head { display: flex; align-items: center; gap: 18px; margin-bottom: 14px; }
+.birkan-job-logo { width: 52px; height: 52px; object-fit: contain; background: #fff; padding: 6px; border: 1px solid var(--birkan-line); }
+.birkan-job-head h3 { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+.birkan-job-main > p { color: var(--birkan-ink-2); max-width: 620px; }
+
+.birkan-points { display: grid; gap: 8px; margin-top: 16px; }
+.birkan-points li { position: relative; padding-left: 22px; }
+.birkan-points li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 8px; height: 1px; background: var(--birkan-accent); }
 
 /* Yetenekler */
-.birkan-tags { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.birkan-tags li { padding: 6px 12px; background: var(--birkan-card); border: 1px solid var(--birkan-line); border-radius: 4px; font-size: 15px; }
+.birkan-skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--birkan-ink); }
+.birkan-skills li { position: relative; padding: 22px 0; border-bottom: 1px solid var(--birkan-line); font-size: clamp(19px, 1.6vw, 23px); letter-spacing: -0.015em; transition: color 0.3s, padding 0.4s var(--birkan-ease); }
+.birkan-skills li::before { content: ""; position: absolute; left: 0; top: 50%; width: 0; height: 1px; background: var(--birkan-accent); transition: width 0.4s var(--birkan-ease); }
+.birkan-skills li:hover { padding-left: 22px; color: var(--birkan-accent-deep); }
+.birkan-skills li:hover::before { width: 12px; }
 
 /* Projeler */
-.birkan-projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
-.birkan-project { display: flex; flex-direction: column; background: var(--birkan-card); border: 1px solid var(--birkan-line); border-radius: 6px; padding: 20px; }
-.birkan-project h3 { font-size: 18px; margin: 0 0 8px; }
-.birkan-project p { font-size: 15px; color: var(--birkan-muted); }
-.birkan-project-badge { font-size: 13px; color: var(--birkan-accent-dark); margin-bottom: 6px; }
-.birkan-project-open { margin-top: auto; align-self: flex-start; background: none; border: 0; padding: 0; color: var(--birkan-accent-dark); font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-.birkan-project-open:hover { color: var(--birkan-text); }
+.birkan-projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--birkan-line); border: 1px solid var(--birkan-line); }
+.birkan-project {
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  padding: 34px 32px 30px;
+  background: var(--birkan-paper);
+  transition: background 0.45s var(--birkan-ease), color 0.45s var(--birkan-ease);
+}
+.birkan-project-badge { font-size: 14px; font-weight: 500; color: var(--birkan-accent-deep); }
+.birkan-project-title { margin-top: 18px; font-size: clamp(28px, 2.4vw, 36px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; }
+.birkan-project-excerpt { margin-top: 16px; font-size: 16px; color: var(--birkan-muted); transition: color 0.45s; }
+.birkan-project-more { margin-top: auto; padding-top: 30px; font-size: 15px; font-weight: 500; }
+.birkan-project-more span { display: inline-block; transition: transform 0.4s var(--birkan-ease); }
+.birkan-project:hover { background: var(--birkan-graphite); color: var(--birkan-on-dark); }
+.birkan-project:hover .birkan-project-badge { color: var(--birkan-accent); }
+.birkan-project:hover .birkan-project-excerpt { color: var(--birkan-on-dark-2); }
+.birkan-project:hover .birkan-project-more span { transform: translateX(6px); }
 
-/* Proje detayı */
-.birkan-dialog { width: min(680px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 32px; border: 0; border-radius: 6px; color: var(--birkan-text); }
-.birkan-dialog::backdrop { background: rgba(20, 21, 23, 0.6); }
-.birkan-dialog h3 { font-size: 24px; margin: 0 0 14px; }
-.birkan-dialog h4 { font-size: 16px; margin: 22px 0 6px; }
-.birkan-dialog-image { margin-bottom: 16px; border-radius: 4px; }
-.birkan-dialog-close { position: absolute; top: 12px; right: 14px; width: 36px; height: 36px; border: 0; background: none; font-size: 26px; line-height: 1; color: var(--birkan-muted); cursor: pointer; }
-.birkan-dialog-close:hover { color: var(--birkan-text); }
+/* Proje detayı: sağdan açılan panel */
+.birkan-drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(640px, 100vw);
+  height: 100vh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--birkan-paper);
+  color: var(--birkan-ink);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.55s var(--birkan-ease), overlay 0.55s allow-discrete, display 0.55s allow-discrete;
+}
+.birkan-drawer[open] { transform: none; }
+@starting-style { .birkan-drawer[open] { transform: translateX(100%); } }
+.birkan-drawer::backdrop { background: rgba(10, 10, 11, 0); transition: background 0.55s, overlay 0.55s allow-discrete, display 0.55s allow-discrete; }
+.birkan-drawer[open]::backdrop { background: rgba(10, 10, 11, 0.55); }
+@starting-style { .birkan-drawer[open]::backdrop { background: rgba(10, 10, 11, 0); } }
+.birkan-drawer-inner { padding: 30px clamp(24px, 5vw, 56px) 56px; }
+.birkan-drawer-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
+.birkan-drawer-close { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--birkan-line); border-radius: 50%; transition: border-color 0.3s, background 0.3s, color 0.3s; }
+.birkan-drawer-close:hover { background: var(--birkan-ink); border-color: var(--birkan-ink); color: #fff; }
+.birkan-drawer-close svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.birkan-drawer-title { font-size: clamp(36px, 4vw, 52px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; }
+.birkan-drawer-image { margin-top: 28px; width: 100%; }
+.birkan-drawer-intro { margin-top: 26px; font-size: 18px; line-height: 1.7; color: var(--birkan-ink-2); }
+.birkan-drawer-block { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--birkan-line); }
+.birkan-drawer-block h4 { font-size: 15px; font-weight: 500; color: var(--birkan-accent-deep); margin-bottom: 10px; }
+.birkan-drawer-block p { color: var(--birkan-ink-2); }
 body.birkan-has-dialog { overflow: hidden; }
 
-/* İletişim */
-.birkan-contact { background: var(--birkan-dark); color: #e6e6e6; border-bottom: 0; }
-.birkan-contact .birkan-row-title { color: #fff; }
-.birkan-contact-list { margin: 20px 0 0; display: grid; gap: 14px; }
-.birkan-contact-list dt { font-size: 14px; color: #9a9c9f; }
-.birkan-contact-list dd { margin: 0; font-size: 20px; color: #fff; }
-.birkan-contact-list a { color: #fff; text-decoration-color: var(--birkan-accent); text-underline-offset: 4px; }
-.birkan-contact-list a:hover { color: var(--birkan-accent); }
+/* ---- İletişim ---- */
+.birkan-contact { background: var(--birkan-graphite); color: var(--birkan-on-dark); padding-top: clamp(96px, 12vw, 168px); }
+.birkan-contact-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 40px; align-items: start; }
+.birkan-contact-lead { margin-top: 20px; max-width: 360px; color: var(--birkan-on-dark-2); }
+.birkan-contact-list { display: grid; gap: 34px; }
+.birkan-contact-list dt { font-size: 14px; color: var(--birkan-on-dark-2); margin-bottom: 6px; }
+.birkan-contact-list dd { font-size: clamp(28px, 3.6vw, 52px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.1; overflow-wrap: anywhere; }
+.birkan-contact-list a { text-decoration: none; background: linear-gradient(var(--birkan-accent), var(--birkan-accent)) left 100% / 0 2px no-repeat; transition: background-size 0.5s var(--birkan-ease), color 0.3s; }
+.birkan-contact-list a:hover { background-size: 100% 2px; }
+.birkan-footer { display: flex; justify-content: space-between; gap: 20px; margin-top: clamp(96px, 12vw, 160px); padding-top: 26px; padding-bottom: 30px; border-top: 1px solid var(--birkan-line-dark); font-size: 14px; color: var(--birkan-on-dark-2); }
+.birkan-footer a { text-decoration: none; color: var(--birkan-on-dark); }
+.birkan-footer a:hover { color: var(--birkan-accent); }
 
-.birkan-footer { background: #141517; color: #8e9093; font-size: 14px; }
-.birkan-footer-inner { display: flex; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 18px; }
-.birkan-footer a { color: #c9cacc; }
+/* ---- Kaydırınca yumuşak beliren bölümler ---- */
+[data-birkan-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.9s var(--birkan-ease), transform 0.9s var(--birkan-ease); }
+[data-birkan-reveal].birkan-is-visible { opacity: 1; transform: none; }
 
-/* Tablet ve mobil */
+/* ---- Duyarlı düzen ---- */
+@media (max-width: 1080px) {
+  .birkan-projects { grid-template-columns: 1fr; }
+  .birkan-project { min-height: 0; }
+  .birkan-skills { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+}
+
 @media (max-width: 860px) {
+  .birkan-navbar { background: rgba(18, 19, 20, 0.96); }
+  .birkan-navbar-inner { height: 64px; }
   .birkan-navbar-toggle { display: block; }
   .birkan-navbar-links {
-    display: none;
     position: absolute;
-    top: 60px;
+    top: 64px;
     left: 0;
     right: 0;
     flex-direction: column;
     gap: 0;
-    padding: 4px 24px 12px;
-    background: var(--birkan-dark);
+    padding: 6px var(--birkan-gutter) 20px;
+    background: var(--birkan-graphite);
+    border-bottom: 1px solid var(--birkan-line-dark);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.3s, transform 0.3s var(--birkan-ease), visibility 0.3s;
   }
-  .birkan-navbar-links.birkan-is-open { display: flex; }
-  .birkan-navbar-links a { padding: 10px 0; border-bottom: 1px solid #2c2f32; }
+  .birkan-navbar-links.birkan-is-open { opacity: 1; visibility: visible; transform: none; }
+  .birkan-navbar-links a { padding: 14px 0; font-size: 19px; color: var(--birkan-on-dark); border-bottom: 1px solid var(--birkan-line-dark); }
+  .birkan-navbar-links a::after { display: none; }
 
-  .birkan-hero { padding: 36px 0 44px; }
-  .birkan-hero-inner { flex-direction: column-reverse; align-items: flex-start; gap: 28px; }
-  .birkan-hero h1 { font-size: 34px; }
-  .birkan-hero-photo { width: 200px; height: 250px; }
+  .birkan-hero { padding: 108px 0 72px; }
+  .birkan-hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .birkan-hero-visual { min-height: 0; padding: 24px 0; }
+  .birkan-hero-visual { justify-items: center; }
+  .birkan-bearing { width: 120%; left: 50%; transform: translate(-50%, -50%); }
+  .birkan-portrait { width: min(100%, 320px); }
 
-  .birkan-row { grid-template-columns: 1fr; gap: 16px; }
-  .birkan-about { grid-template-columns: 1fr; }
-  .birkan-about-photo { display: none; }
-  .birkan-list-2 { columns: 1; }
-  .birkan-entry { flex-wrap: wrap; }
-  .birkan-entry-side { flex-direction: row; gap: 10px; width: 100%; align-items: center; text-align: left; padding-left: 0; }
-  .birkan-projects { grid-template-columns: 1fr; }
-  .birkan-footer-inner { flex-direction: column; }
+  .birkan-head, .birkan-about-top, .birkan-about-grid, .birkan-job, .birkan-contact-grid { grid-template-columns: 1fr; gap: 20px; }
+  .birkan-expertise ul { grid-template-columns: 1fr; }
+  .birkan-timeline { grid-template-columns: 1fr; border-top: 0; border-left: 1px solid var(--birkan-ink); }
+  .birkan-timeline li, .birkan-timeline li + li { padding: 0 0 36px 28px; border-left: 0; }
+  .birkan-timeline li::before, .birkan-timeline li + li::before { top: 6px; left: -4px; }
+  .birkan-skills { grid-template-columns: 1fr; }
+  .birkan-footer { flex-direction: column; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  [data-birkan-reveal] { opacity: 1; transform: none; }
+  .birkan-bearing-body circle { stroke-dashoffset: 0; }
+}
+
+/* Proje kartlarındaki teknik çizimler */
+.birkan-drawing { width: 150px; height: auto; margin-bottom: 34px; overflow: visible; }
+.birkan-drawing circle, .birkan-drawing path, .birkan-drawing line, .birkan-drawing rect { fill: none; stroke: #9a958d; stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 0.45s var(--birkan-ease); }
+.birkan-drawing .birkan-drawing-fill { fill: #9a958d; stroke: none; transition: fill 0.45s var(--birkan-ease); }
+.birkan-drawing .birkan-drawing-axis { stroke: var(--birkan-accent); stroke-dasharray: 10 3 2 3; opacity: 0.6; }
+.birkan-drawing .birkan-drawing-pitch { stroke-dasharray: 3 4; }
+.birkan-project:hover .birkan-drawing circle,
+.birkan-project:hover .birkan-drawing path,
+.birkan-project:hover .birkan-drawing line,
+.birkan-project:hover .birkan-drawing rect { stroke: #d8d4cc; }
+.birkan-project:hover .birkan-drawing .birkan-drawing-fill { fill: #d8d4cc; }
+.birkan-project:hover .birkan-drawing .birkan-drawing-axis { stroke: var(--birkan-accent); }

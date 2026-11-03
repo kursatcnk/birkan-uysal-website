@@ -2,6 +2,12 @@
 (() => {
   "use strict";
 
+  // Üst menü girişte şeffaf; sayfa kaydıkça grafit zemin alıyor.
+  const birkanNavbar = document.getElementById("birkan-navbar");
+  const birkanOnScroll = () => birkanNavbar.classList.toggle("birkan-is-scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", birkanOnScroll, { passive: true });
+  birkanOnScroll();
+
   // Mobil menü
   const birkanLinks = document.getElementById("birkan-navbar-links");
   const birkanToggle = document.getElementById("birkan-navbar-toggle");
@@ -32,23 +38,33 @@
     if (section) birkanSpy.observe(section);
   });
 
-  // Proje detay pencereleri
+  // Bölümler ekrana girerken yumuşakça beliriyor.
+  const birkanRevealer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add("birkan-is-visible");
+      birkanRevealer.unobserve(entry.target);
+    }
+  }, { rootMargin: "0px 0px -10% 0px" });
+  document.querySelectorAll("[data-birkan-reveal]").forEach((el) => birkanRevealer.observe(el));
+
+  // Proje detayları sağdan açılan panelde
   document.querySelectorAll("[data-birkan-open]").forEach((button) => {
     button.addEventListener("click", () => {
-      const dialog = document.getElementById(button.dataset.birkanOpen);
-      if (!dialog) return;
-      dialog.showModal();
+      const drawer = document.getElementById(button.dataset.birkanOpen);
+      if (!drawer) return;
+      drawer.showModal();
       document.body.classList.add("birkan-has-dialog");
     });
   });
 
-  document.querySelectorAll(".birkan-dialog").forEach((dialog) => {
-    dialog.addEventListener("click", (e) => {
-      // Pencerenin dışına tıklanınca kapanıyor.
-      const r = dialog.getBoundingClientRect();
+  document.querySelectorAll(".birkan-drawer").forEach((drawer) => {
+    drawer.addEventListener("click", (e) => {
+      // Panelin dışına (karartılmış alana) tıklanınca kapanıyor.
+      const r = drawer.getBoundingClientRect();
       const outside = e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
-      if (outside || e.target.closest("[data-birkan-close]")) dialog.close();
+      if (outside || e.target.closest("[data-birkan-close]")) drawer.close();
     });
-    dialog.addEventListener("close", () => document.body.classList.remove("birkan-has-dialog"));
+    drawer.addEventListener("close", () => document.body.classList.remove("birkan-has-dialog"));
   });
 })();
