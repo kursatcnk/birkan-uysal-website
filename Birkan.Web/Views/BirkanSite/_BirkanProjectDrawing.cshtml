@@ -1,0 +1,59 @@
+@model int
+@* Proje kartlarının üstündeki küçük teknik çizimler: flanş, dişli çifti ve kiriş sehimi sırayla dönüyor. *@
+@{
+    var inv = System.Globalization.CultureInfo.InvariantCulture;
+
+    // Dişli dış hattı: dişler yamuk, kök ve uç yarıçapları arasında.
+    string Gear(double cx, double cy, double rTip, double rRoot, int teeth, double phase)
+    {
+        var sb = new System.Text.StringBuilder();
+        var step = 2 * Math.PI / teeth;
+        for (var i = 0; i < teeth; i++)
+        {
+            var a = phase + i * step;
+            (double, double) P(double r, double ang) => (cx + r * Math.Cos(ang), cy + r * Math.Sin(ang));
+            var pts = new[] { P(rRoot, a), P(rTip, a + step * 0.18), P(rTip, a + step * 0.42), P(rRoot, a + step * 0.6) };
+            foreach (var (x, y) in pts)
+                sb.Append(sb.Length == 0 ? "M" : "L").Append(x.ToString("0.#", inv)).Append(' ').Append(y.ToString("0.#", inv)).Append(' ');
+        }
+        return sb.Append('Z').ToString();
+    }
+
+    string F(double v) => v.ToString("0.#", inv);
+}
+<svg class="birkan-drawing" viewBox="0 0 180 110" aria-hidden="true" focusable="false">
+    @switch (Model % 3)
+    {
+        case 0:
+            <line class="birkan-drawing-axis" x1="20" y1="55" x2="160" y2="55" />
+            <line class="birkan-drawing-axis" x1="90" y1="5" x2="90" y2="105" />
+            <circle cx="90" cy="55" r="46" />
+            <circle cx="90" cy="55" r="17" />
+            <circle cx="90" cy="55" r="34" class="birkan-drawing-pitch" />
+            @for (var i = 0; i < 6; i++)
+            {
+                var a = i * Math.PI / 3 - Math.PI / 2;
+                <circle cx="@F(90 + 34 * Math.Cos(a))" cy="@F(55 + 34 * Math.Sin(a))" r="4.5" />
+            }
+            break;
+        case 1:
+            <line class="birkan-drawing-axis" x1="10" y1="58" x2="170" y2="58" />
+            <path d="@Gear(66, 58, 42, 35, 16, 0)" />
+            <circle cx="66" cy="58" r="10" />
+            <path d="@Gear(130, 58, 25, 19, 10, 0.17)" />
+            <circle cx="130" cy="58" r="6" />
+            break;
+        default:
+            <rect x="18" y="38" width="144" height="10" />
+            <path d="M28 48l-8 14h16zM152 48l-8 14h16z" />
+            <line x1="14" y1="62" x2="42" y2="62" />
+            <line x1="138" y1="62" x2="166" y2="62" />
+            <path class="birkan-drawing-pitch" d="M28 43C60 72 120 72 152 43" />
+            @foreach (var x in new[] { 60, 90, 120 })
+            {
+                <line x1="@x" y1="8" x2="@x" y2="34" />
+                <path d="M@(x) 37l-3.5-7h7z" class="birkan-drawing-fill" />
+            }
+            break;
+    }
+</svg>
