@@ -1,0 +1,366 @@
+@model BirkanContent
+@{
+    var site = Model.Site;
+    var hasExperience = Model.Experience.Items.Count > 0;
+
+    // Bölüm numaraları deneyim bölümü açılıp kapandıkça kendiliğinden kayıyor.
+    var chapters = new List<(string Id, string Label)>
+    {
+        ("birkan-about", site.Nav.About),
+        ("birkan-education", site.Nav.Education)
+    };
+    if (hasExperience) chapters.Add(("birkan-experience", site.Nav.Experience));
+    chapters.Add(("birkan-skills", site.Nav.Skills));
+    chapters.Add(("birkan-projects", site.Nav.Projects));
+    chapters.Add(("birkan-contact", site.Nav.Contact));
+
+    string Chapter(string id) => (chapters.FindIndex(c => c.Id == id) + 1).ToString("00");
+
+    var nameParts = Model.Hero.Name.Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@site.Title</title>
+    <meta name="description" content="@site.MetaDescription" />
+    <meta name="author" content="@site.Name" />
+    <meta property="og:title" content="@site.Title" />
+    <meta property="og:description" content="@site.MetaDescription" />
+    <meta property="og:image" content="@Model.Hero.Photo" />
+    <meta name="theme-color" content="#f3f1ec" />
+    <link rel="icon" href="/birkan-media/birkan-mark.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preload" as="image" href="@Model.Hero.Photo" />
+    <link rel="stylesheet" href="~/css/birkan-site.css" asp-append-version="true" />
+</head>
+<body class="birkan-body birkan-is-loading">
+
+<div class="birkan-preloader" aria-hidden="true">
+    <span class="birkan-preloader-name">@site.Name</span>
+    <span class="birkan-preloader-bar"></span>
+</div>
+
+<header class="birkan-navbar" id="birkan-navbar">
+    <a class="birkan-navbar-brand" href="#birkan-home" aria-label="@site.Name">
+        @if (!string.IsNullOrEmpty(site.Logo))
+        {
+            <img src="@site.Logo" alt="@site.Name" class="birkan-navbar-logo" />
+        }
+        else
+        {
+            <span class="birkan-navbar-mark">@string.Concat(nameParts.Select(p => p[0]))</span>
+            <span class="birkan-navbar-name">@site.Name</span>
+        }
+    </a>
+    <nav class="birkan-navbar-links" id="birkan-navbar-links" aria-label="@site.Nav.Home">
+        <a href="#birkan-home" data-birkan-spy="birkan-home">@site.Nav.Home</a>
+        @foreach (var c in chapters)
+        {
+            <a href="#@c.Id" data-birkan-spy="@c.Id">@c.Label</a>
+        }
+    </nav>
+    <button class="birkan-navbar-toggle" id="birkan-navbar-toggle" type="button" aria-controls="birkan-navbar-links" aria-expanded="false" aria-label="Menü">
+        <span></span><span></span>
+    </button>
+</header>
+
+<main class="birkan-main">
+
+    <section class="birkan-hero" id="birkan-home">
+        <div class="birkan-hero-head birkan-shell">
+            <p class="birkan-label birkan-hero-role">@site.Role</p>
+            <h1 class="birkan-hero-name">
+                @foreach (var part in nameParts)
+                {
+                    <span class="birkan-hero-line"><span>@part</span></span>
+                }
+            </h1>
+            <div class="birkan-hero-intro">
+                <p class="birkan-hero-text">@Model.Hero.Text</p>
+                <div class="birkan-hero-actions">
+                    @foreach (var social in Model.Hero.Socials)
+                    {
+                        <a class="birkan-pill" href="@social.Url" target="_blank" rel="noopener noreferrer">
+                            @social.Label
+                            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="birkan-hero-stage" id="birkan-hero-stage">
+            <figure class="birkan-hero-frame">
+                <img src="@Model.Hero.Photo" alt="@Model.Hero.Name" fetchpriority="high" />
+            </figure>
+        </div>
+    </section>
+
+    <section class="birkan-section birkan-about" id="birkan-about">
+        <div class="birkan-shell">
+            <header class="birkan-section-head" data-birkan-reveal>
+                <span class="birkan-label">@Chapter("birkan-about")</span>
+                <h2 class="birkan-label">@Model.About.Title</h2>
+            </header>
+
+            <div class="birkan-about-grid">
+                <div class="birkan-about-copy" data-birkan-reveal>
+                    <p class="birkan-about-greeting">@Model.About.Greeting <strong>@Model.About.GreetingName</strong></p>
+                    <p class="birkan-about-bio">@Model.About.Bio</p>
+                </div>
+                <figure class="birkan-about-portrait" data-birkan-reveal>
+                    <img src="@Model.About.Photo" alt="@site.Name" loading="lazy" />
+                    <figcaption class="birkan-about-badge">
+                        <span>@Model.About.BadgeTop</span>
+                        <span>@Model.About.BadgeBottom</span>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="birkan-expertise" data-birkan-reveal>
+                <div class="birkan-expertise-head">
+                    <h3>@Model.About.ExpertiseTitle</h3>
+                    <p>@Model.About.ExpertiseDescription</p>
+                </div>
+                <ol class="birkan-expertise-list">
+                    @for (var i = 0; i < Model.About.Expertise.Count; i++)
+                    {
+                        <li><span class="birkan-index">@((i + 1).ToString("00"))</span>@Model.About.Expertise[i]</li>
+                    }
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="birkan-section birkan-education" id="birkan-education">
+        <div class="birkan-shell">
+            <header class="birkan-section-head" data-birkan-reveal>
+                <span class="birkan-label">@Chapter("birkan-education")</span>
+                <h2 class="birkan-label">@Model.Education.Title</h2>
+            </header>
+            @if (!string.IsNullOrEmpty(Model.Education.Description))
+            {
+                <p class="birkan-section-lead" data-birkan-reveal>@Model.Education.Description</p>
+            }
+            <ol class="birkan-timeline">
+                @foreach (var item in Model.Education.Items)
+                {
+                    <li class="birkan-timeline-item" data-birkan-reveal>
+                        <div class="birkan-timeline-meta">
+                            <span class="birkan-label">@item.Degree</span>
+                            @if (!string.IsNullOrEmpty(item.Years))
+                            {
+                                <span class="birkan-label birkan-muted">@item.Years</span>
+                            }
+                        </div>
+                        <span class="birkan-timeline-dot" aria-hidden="true"></span>
+                        @if (!string.IsNullOrEmpty(item.Logo))
+                        {
+                            <img class="birkan-timeline-logo" src="@item.Logo" alt="@item.School" loading="lazy" />
+                        }
+                        <h3 class="birkan-timeline-school">@item.School</h3>
+                        @if (!string.IsNullOrEmpty(item.Faculty))
+                        {
+                            <p class="birkan-timeline-sub">@item.Faculty</p>
+                        }
+                        @if (!string.IsNullOrEmpty(item.Department))
+                        {
+                            <p class="birkan-timeline-sub birkan-strong">@item.Department</p>
+                        }
+                    </li>
+                }
+            </ol>
+        </div>
+    </section>
+
+    @if (hasExperience)
+    {
+        <section class="birkan-section birkan-experience" id="birkan-experience">
+            <div class="birkan-shell">
+                <header class="birkan-section-head" data-birkan-reveal>
+                    <span class="birkan-label">@Chapter("birkan-experience")</span>
+                    <h2 class="birkan-label">@Model.Experience.Title</h2>
+                </header>
+                @if (!string.IsNullOrEmpty(Model.Experience.Description))
+                {
+                    <p class="birkan-section-lead" data-birkan-reveal>@Model.Experience.Description</p>
+                }
+                <ol class="birkan-experience-list">
+                    @foreach (var job in Model.Experience.Items)
+                    {
+                        <li class="birkan-experience-item" data-birkan-reveal>
+                            <div class="birkan-experience-when">
+                                <span class="birkan-label">@job.Start@(string.IsNullOrEmpty(job.End) ? "" : $" — {job.End}")</span>
+                                @if (!string.IsNullOrEmpty(job.Location))
+                                {
+                                    <span class="birkan-label birkan-muted">@job.Location</span>
+                                }
+                            </div>
+                            <div class="birkan-experience-body">
+                                <div class="birkan-experience-title">
+                                    @if (!string.IsNullOrEmpty(job.Logo))
+                                    {
+                                        <img class="birkan-experience-logo" src="@job.Logo" alt="@job.Company" loading="lazy" />
+                                    }
+                                    <div>
+                                        <h3>@job.Position</h3>
+                                        <p class="birkan-experience-company">@job.Company</p>
+                                    </div>
+                                </div>
+                                @if (!string.IsNullOrEmpty(job.Description))
+                                {
+                                    <p class="birkan-experience-text">@job.Description</p>
+                                }
+                                @if (job.Highlights.Count > 0)
+                                {
+                                    <ul class="birkan-bullets">
+                                        @foreach (var h in job.Highlights)
+                                        {
+                                            <li>@h</li>
+                                        }
+                                    </ul>
+                                }
+                            </div>
+                        </li>
+                    }
+                </ol>
+            </div>
+        </section>
+    }
+
+    <section class="birkan-section birkan-skills" id="birkan-skills">
+        <div class="birkan-shell">
+            <header class="birkan-section-head" data-birkan-reveal>
+                <span class="birkan-label">@Chapter("birkan-skills")</span>
+                <h2 class="birkan-label">@Model.Skills.Title</h2>
+            </header>
+            <p class="birkan-section-lead" data-birkan-reveal>@Model.Skills.Description</p>
+            <ul class="birkan-skill-grid">
+                @for (var i = 0; i < Model.Skills.Items.Count; i++)
+                {
+                    var skill = Model.Skills.Items[i];
+                    <li class="birkan-skill" data-birkan-reveal style="--birkan-delay:@(i % 4)">
+                        <span class="birkan-index">@((i + 1).ToString("00"))</span>
+                        @if (!string.IsNullOrEmpty(skill.Icon))
+                        {
+                            <span class="birkan-skill-icon" style="--birkan-icon:url('@skill.Icon')" aria-hidden="true"></span>
+                        }
+                        <span class="birkan-skill-name">@skill.Name</span>
+                    </li>
+                }
+            </ul>
+        </div>
+    </section>
+
+    <section class="birkan-section birkan-projects" id="birkan-projects">
+        <div class="birkan-shell">
+            <header class="birkan-section-head" data-birkan-reveal>
+                <span class="birkan-label">@Chapter("birkan-projects")</span>
+                <h2 class="birkan-label">@Model.Projects.Title</h2>
+            </header>
+            <p class="birkan-section-lead" data-birkan-reveal>@Model.Projects.Description</p>
+            <ol class="birkan-project-list">
+                @for (var i = 0; i < Model.Projects.Items.Count; i++)
+                {
+                    var project = Model.Projects.Items[i];
+                    <li data-birkan-reveal>
+                        <button class="birkan-project-row" type="button" data-birkan-open="birkan-project-@i">
+                            <span class="birkan-index">@((i + 1).ToString("00"))</span>
+                            <span class="birkan-project-main">
+                                <span class="birkan-label birkan-muted">@project.Badge</span>
+                                <span class="birkan-project-title">@project.Title</span>
+                                <span class="birkan-project-excerpt">@project.Excerpt</span>
+                            </span>
+                            <span class="birkan-pill birkan-pill-quiet">
+                                @project.Hint
+                                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                            </span>
+                        </button>
+                    </li>
+                }
+            </ol>
+        </div>
+    </section>
+
+    <section class="birkan-section birkan-contact" id="birkan-contact">
+        <div class="birkan-shell">
+            <header class="birkan-section-head" data-birkan-reveal>
+                <span class="birkan-label">@Chapter("birkan-contact")</span>
+                <h2 class="birkan-label">@Model.Contact.Title</h2>
+            </header>
+            <p class="birkan-contact-lead" data-birkan-reveal>@Model.Contact.Description</p>
+            <dl class="birkan-contact-list">
+                @foreach (var item in Model.Contact.Items)
+                {
+                    <div class="birkan-contact-item" data-birkan-reveal>
+                        <dt class="birkan-label">@item.Label</dt>
+                        <dd>
+                            @if (!string.IsNullOrEmpty(item.Url))
+                            {
+                                <a href="@item.Url" class="birkan-contact-link">@item.Value</a>
+                            }
+                            else
+                            {
+                                <span class="birkan-contact-link">@item.Value</span>
+                            }
+                        </dd>
+                    </div>
+                }
+            </dl>
+        </div>
+        <footer class="birkan-footer birkan-shell">
+            <span>© @DateTime.Now.Year @site.Name</span>
+            <span class="birkan-footer-links">
+                @foreach (var social in Model.Hero.Socials)
+                {
+                    <a href="@social.Url" target="_blank" rel="noopener noreferrer">@social.Label</a>
+                }
+            </span>
+        </footer>
+    </section>
+</main>
+
+@for (var i = 0; i < Model.Projects.Items.Count; i++)
+{
+    var project = Model.Projects.Items[i];
+    <dialog class="birkan-dialog" id="birkan-project-@i" aria-labelledby="birkan-project-@i-title">
+        <div class="birkan-dialog-inner">
+            <button class="birkan-dialog-close" type="button" data-birkan-close aria-label="@project.Title">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" /></svg>
+            </button>
+            <span class="birkan-label birkan-muted">@project.Badge</span>
+            <h3 class="birkan-dialog-title" id="birkan-project-@i-title">@project.Title</h3>
+            @if (!string.IsNullOrEmpty(project.Image))
+            {
+                <img class="birkan-dialog-image" src="@project.Image" alt="@project.Title" loading="lazy" />
+            }
+            <p class="birkan-dialog-intro">@project.Intro</p>
+            <div class="birkan-dialog-blocks">
+                @foreach (var block in project.Blocks)
+                {
+                    <div>
+                        <h4 class="birkan-label">@block.Heading</h4>
+                        <p>@block.Text</p>
+                    </div>
+                }
+            </div>
+            @if (project.Highlights.Count > 0)
+            {
+                <h4 class="birkan-label">@project.ListTitle</h4>
+                <ul class="birkan-bullets">
+                    @foreach (var h in project.Highlights)
+                    {
+                        <li>@h</li>
+                    }
+                </ul>
+            }
+        </div>
+    </dialog>
+}
+
+<script src="~/js/birkan-site.js" asp-append-version="true"></script>
+</body>
+</html>
