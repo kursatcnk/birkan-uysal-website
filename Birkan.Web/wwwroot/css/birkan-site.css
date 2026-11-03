@@ -162,14 +162,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .birkan-timeline h3 { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 10px; }
 .birkan-timeline p { font-size: 16px; }
 
-/* Deneyim */
-.birkan-jobs { background: linear-gradient(var(--birkan-ink), var(--birkan-ink)) left top / var(--birkan-rule, 100%) 1px no-repeat; }
-.birkan-job { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--birkan-line); }
-.birkan-job-side p { font-size: 16px; }
-.birkan-job-head { display: flex; align-items: center; gap: 18px; margin-bottom: 14px; }
-.birkan-job-logo { width: 52px; height: 52px; object-fit: contain; background: #fff; padding: 6px; border: 1px solid var(--birkan-line); }
-.birkan-job-head h3 { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
-.birkan-job-main > p { color: var(--birkan-ink-2); max-width: 620px; }
 
 .birkan-points { display: grid; gap: 8px; margin-top: 16px; }
 .birkan-points li { position: relative; padding-left: 22px; }
@@ -286,7 +278,7 @@ body.birkan-has-dialog { overflow: hidden; }
   .birkan-hero-visual { justify-items: center; }
   .birkan-portrait { width: min(100%, 320px); }
 
-  .birkan-head, .birkan-about-top, .birkan-about-grid, .birkan-job, .birkan-contact-grid { grid-template-columns: 1fr; gap: 20px; }
+  .birkan-head, .birkan-about-top, .birkan-about-grid, .birkan-exp-head, .birkan-contact-grid { grid-template-columns: 1fr; gap: 20px; }
   .birkan-expertise ul { grid-template-columns: 1fr; }
   .birkan-timeline { grid-template-columns: 1fr; background: none; border-left: 1px solid var(--birkan-ink); }
   .birkan-timeline li, .birkan-timeline li + li { padding: 0 0 36px 28px; border-left: 0; }
@@ -356,3 +348,79 @@ body.birkan-has-dialog { overflow: hidden; }
 /* İletişim bağlantısında harfler sırayla yükselip iniyor */
 .birkan-contact-list a .birkan-char { display: inline-block; transition: transform 0.45s var(--birkan-ease), color 0.3s; transition-delay: calc(var(--i) * 18ms); }
 .birkan-contact-list a:hover .birkan-char { transform: translateY(-0.12em); color: var(--birkan-accent); }
+
+/* ==== Giriş: alt unvan ==== */
+.birkan-hero-specialty { margin-top: 26px; font-size: clamp(20px, 1.8vw, 26px); font-weight: 400; letter-spacing: -0.02em; color: var(--birkan-on-dark-2); }
+.birkan-hero-specialty::before { content: ""; display: inline-block; width: 34px; height: 1px; margin-right: 16px; vertical-align: middle; background: var(--birkan-accent); }
+
+/* ==== Deneyimler: koyu zeminde kurum satırları ==== */
+.birkan-experience { background: var(--birkan-graphite); color: var(--birkan-on-dark); padding: clamp(96px, 12vw, 168px) 0; }
+.birkan-kicker { font-size: 14px; font-weight: 500; color: var(--birkan-accent); margin-bottom: 16px; }
+.birkan-exp-head { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 40px; align-items: end; margin-bottom: clamp(56px, 7vw, 96px); }
+.birkan-exp-lead { max-width: 560px; font-size: 18px; color: var(--birkan-on-dark-2); }
+.birkan-exp-stats { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 0; margin-top: 36px; }
+.birkan-exp-stats > div { padding: 4px 36px 4px 0; margin-right: 36px; border-right: 1px solid var(--birkan-line-dark); }
+.birkan-exp-stats > div:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+.birkan-exp-stats dt { font-size: clamp(28px, 2.6vw, 38px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.birkan-exp-stats dd { margin-top: 4px; font-size: 14px; color: var(--birkan-on-dark-2); }
+
+.birkan-exp-list { background: linear-gradient(var(--birkan-on-dark), var(--birkan-on-dark)) left top / var(--birkan-rule, 100%) 1px no-repeat; }
+.birkan-exp-list > li { border-bottom: 1px solid var(--birkan-line-dark); }
+.birkan-exp {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 112px 172px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(20px, 3vw, 48px);
+  padding: 36px 0;
+  color: inherit;
+  transition: background 0.5s var(--birkan-ease);
+}
+.birkan-exp::before { content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 0; background: var(--birkan-accent); transition: width 0.7s var(--birkan-ease); }
+.birkan-exp-period { display: grid; font-size: 26px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.birkan-exp-period-end { color: var(--birkan-on-dark-2); font-size: 17px; letter-spacing: -0.01em; margin-top: 4px; }
+.birkan-exp-period-end::before { content: "— "; }
+.birkan-exp-logo { display: grid; place-items: center; height: 92px; padding: 14px 18px; background: #f4f2ee; border-radius: 2px; overflow: hidden; }
+.birkan-exp-logo img { max-width: 100%; max-height: 64px; object-fit: contain; filter: grayscale(1) contrast(1.1); opacity: 0.8; transition: filter 0.6s var(--birkan-ease), opacity 0.6s, transform 0.6s var(--birkan-ease); }
+.birkan-exp-main { display: grid; gap: 8px; }
+.birkan-exp-category { font-size: 14px; font-weight: 500; color: var(--birkan-accent); }
+.birkan-exp-company { font-size: clamp(30px, 3vw, 44px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; transition: transform 0.6s var(--birkan-ease); }
+.birkan-exp-summary { max-width: 620px; font-size: 16px; line-height: 1.6; color: var(--birkan-on-dark-2); }
+.birkan-exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.birkan-exp-tags span { padding: 5px 11px; border: 1px solid var(--birkan-line-dark); border-radius: 2px; font-size: 13px; color: #c9c8c4; transition: border-color 0.4s, color 0.4s; }
+.birkan-exp-more { font-size: 15px; font-weight: 500; white-space: nowrap; color: var(--birkan-on-dark-2); transition: color 0.4s; }
+.birkan-exp-more span { display: inline-block; transition: transform 0.5s var(--birkan-ease); }
+
+.birkan-exp:hover { background: rgba(239, 236, 230, 0.03); }
+.birkan-exp:hover::before { width: 100%; }
+.birkan-exp:hover .birkan-exp-logo img { filter: none; opacity: 1; transform: scale(1.04); }
+.birkan-exp:hover .birkan-exp-company { transform: translateX(10px); }
+.birkan-exp:hover .birkan-exp-tags span { border-color: rgba(224, 97, 43, 0.5); color: var(--birkan-on-dark); }
+.birkan-exp:hover .birkan-exp-more { color: var(--birkan-on-dark); }
+.birkan-exp:hover .birkan-exp-more span { transform: translateX(6px); }
+
+/* Deneyim detay paneli */
+.birkan-drawer-logo { display: inline-grid; place-items: center; height: 84px; padding: 14px 20px; margin-bottom: 26px; background: #fff; border: 1px solid var(--birkan-line); border-radius: 2px; }
+.birkan-drawer-logo img { max-height: 56px; max-width: 220px; object-fit: contain; }
+.birkan-drawer-period { margin-top: 10px; font-size: 16px; color: var(--birkan-muted); font-variant-numeric: tabular-nums; }
+.birkan-drawer-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+.birkan-drawer-numbered { counter-reset: birkan-n; display: grid; gap: 2px; }
+.birkan-drawer-numbered li { counter-increment: birkan-n; display: grid; grid-template-columns: 34px 1fr; padding: 10px 0; border-bottom: 1px solid var(--birkan-line); }
+.birkan-drawer-numbered li::before { content: counter(birkan-n, decimal-leading-zero); font-size: 13px; color: var(--birkan-accent-deep); font-variant-numeric: tabular-nums; padding-top: 3px; }
+.birkan-drawer-note { margin-top: 28px; padding: 18px 20px; background: var(--birkan-paper-2); border-left: 2px solid var(--birkan-accent); font-size: 15px; color: var(--birkan-ink-2); }
+.birkan-drawer-note strong { font-weight: 600; color: var(--birkan-ink); }
+
+@media (max-width: 860px) {
+  .birkan-exp-head { grid-template-columns: 1fr; }
+  .birkan-exp-stats { grid-template-columns: repeat(3, auto); }
+  .birkan-exp-stats dt { font-size: 22px; white-space: nowrap; }
+  .birkan-exp-stats > div { padding-right: 14px; margin-right: 14px; }
+  .birkan-exp { grid-template-columns: 1fr auto; grid-template-areas: "logo period" "main main" "more more"; gap: 18px; padding: 28px 0; }
+  .birkan-exp-logo { grid-area: logo; width: 150px; height: 76px; }
+  .birkan-exp-period { grid-area: period; text-align: right; font-size: 20px; }
+  .birkan-exp-period-end { font-size: 15px; }
+  .birkan-exp-main { grid-area: main; }
+  .birkan-exp-more { grid-area: more; }
+  .birkan-drawer-blocks { grid-template-columns: 1fr; }
+}

@@ -17,6 +17,15 @@
     var aboutPhoto = BirkanSafe.MediaPath(Model.About.Photo);
     var nameParts = Model.Hero.Name.Split(' ', 2, StringSplitOptions.RemoveEmptyEntries);
     var location = Model.Contact.Items.FirstOrDefault(c => c.Type == "location")?.Value;
+    var cvFile = BirkanSafe.MediaPath(Model.Hero.CvFile);
+
+    // Deneyim özeti: kurum sayısı ve yıl aralığı kayıtlardan hesaplanıyor ("1 Yıl" gibi yıl olmayan bitişler atlanıyor).
+    var expYears = Model.Experience.Items
+        .SelectMany(e => new[] { e.Start, e.End })
+        .Select(v => int.TryParse(v, out var y) && y > 1900 ? y : (int?)null)
+        .Where(y => y.HasValue)
+        .Select(y => y!.Value)
+        .ToList();
 }
 <!DOCTYPE html>
 <html lang="tr">
@@ -84,9 +93,20 @@
                         <span>@part</span>
                     }
                 </h1>
-                <p class="birkan-hero-intro">@Model.Hero.Text</p>
+                @if (!string.IsNullOrEmpty(Model.Hero.Specialty))
+                {
+                    <p class="birkan-hero-specialty">@Model.Hero.Specialty</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.Hero.Text))
+                {
+                    <p class="birkan-hero-intro">@Model.Hero.Text</p>
+                }
                 <div class="birkan-hero-actions">
                     <a class="birkan-btn" href="#birkan-contact">@site.Nav.Contact</a>
+                    @if (!string.IsNullOrEmpty(cvFile))
+                    {
+                        <a class="birkan-link" href="@cvFile" download="Birkan-UYSAL-CV.pdf">@Model.Hero.CvLabel <span aria-hidden="true">↓</span></a>
+                    }
                     @foreach (var social in Model.Hero.Socials)
                     {
                         <a class="birkan-link" href="@BirkanSafe.Url(social.Url)" target="_blank" rel="noopener noreferrer">@social.Label <span aria-hidden="true">↗</span></a>
@@ -174,51 +194,85 @@
 
     @if (hasExperience)
     {
-        <section class="birkan-section" id="birkan-experience">
+        <section class="birkan-experience" id="birkan-experience">
             <div class="birkan-shell">
-                <div class="birkan-head" data-birkan-reveal>
-                    <h2 class="birkan-title" data-birkan-split>@Model.Experience.Title</h2>
-                    @if (!string.IsNullOrEmpty(Model.Experience.Description))
-                    {
-                        <p class="birkan-muted">@Model.Experience.Description</p>
-                    }
-                </div>
-                <ol class="birkan-jobs" data-birkan-stagger>
-                    @foreach (var job in Model.Experience.Items)
-                    {
-                        <li class="birkan-job" data-birkan-reveal>
-                            <div class="birkan-job-side">
-                                <p>@job.Start@(string.IsNullOrEmpty(job.End) ? "" : $" — {job.End}")</p>
-                                @if (!string.IsNullOrEmpty(job.Location))
-                                {
-                                    <p class="birkan-muted">@job.Location</p>
-                                }
+                <div class="birkan-exp-head">
+                    <div data-birkan-reveal>
+                        @if (!string.IsNullOrEmpty(Model.Experience.Kicker))
+                        {
+                            <p class="birkan-kicker">@Model.Experience.Kicker</p>
+                        }
+                        <h2 class="birkan-title" data-birkan-split>@Model.Experience.Title</h2>
+                    </div>
+                    <div data-birkan-reveal>
+                        @if (!string.IsNullOrEmpty(Model.Experience.Description))
+                        {
+                            <p class="birkan-exp-lead">@Model.Experience.Description</p>
+                        }
+                        <dl class="birkan-exp-stats">
+                            <div>
+                                <dt><span data-birkan-count="@Model.Experience.Items.Count">@Model.Experience.Items.Count</span></dt>
+                                <dd>Kurum</dd>
                             </div>
-                            <div class="birkan-job-main">
-                                <div class="birkan-job-head">
-                                    @if (!string.IsNullOrEmpty(BirkanSafe.MediaPath(job.Logo)))
-                                    {
-                                        <img class="birkan-job-logo" src="@BirkanSafe.MediaPath(job.Logo)" alt="" loading="lazy" />
-                                    }
-                                    <div>
-                                        <h3>@job.Position</h3>
-                                        <p class="birkan-muted">@job.Company</p>
-                                    </div>
+                            @if (expYears.Count > 0)
+                            {
+                                <div>
+                                    <dt>@expYears.Min() → @expYears.Max()</dt>
                                 </div>
-                                @if (!string.IsNullOrEmpty(job.Description))
-                                {
-                                    <p>@job.Description</p>
-                                }
-                                @if (job.Highlights.Count > 0)
-                                {
-                                    <ul class="birkan-points">
-                                        @foreach (var h in job.Highlights)
-                                        {
-                                            <li>@h</li>
-                                        }
-                                    </ul>
-                                }
-                            </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Experience.MetaNote))
+                            {
+                                <div>
+                                    <dt>@Model.Experience.Items.Sum(e => e.Highlights.Count)</dt>
+                                    <dd>@Model.Experience.MetaNote</dd>
+                                </div>
+                            }
+                        </dl>
+                    </div>
+                </div>
+
+                <ol class="birkan-exp-list" data-birkan-stagger>
+                    @for (var i = 0; i < Model.Experience.Items.Count; i++)
+                    {
+                        var job = Model.Experience.Items[i];
+                        var logo = BirkanSafe.MediaPath(job.Logo);
+                        <li>
+                            <button class="birkan-exp" type="button" data-birkan-open="birkan-exp-@i">
+                                <span class="birkan-exp-period">
+                                    <span>@job.Start</span>
+                                    @if (!string.IsNullOrEmpty(job.End))
+                                    {
+                                        <span class="birkan-exp-period-end">@job.End</span>
+                                    }
+                                </span>
+                                <span class="birkan-exp-logo">
+                                    @if (!string.IsNullOrEmpty(logo))
+                                    {
+                                        <img src="@logo" alt="@job.Company" loading="lazy" />
+                                    }
+                                </span>
+                                <span class="birkan-exp-main">
+                                    @if (!string.IsNullOrEmpty(job.Category))
+                                    {
+                                        <span class="birkan-exp-category">@job.Category</span>
+                                    }
+                                    <span class="birkan-exp-company">@job.Company</span>
+                                    @if (!string.IsNullOrEmpty(job.Description))
+                                    {
+                                        <span class="birkan-exp-summary">@job.Description</span>
+                                    }
+                                    @if (job.Tags.Count > 0)
+                                    {
+                                        <span class="birkan-exp-tags">
+                                            @foreach (var tag in job.Tags)
+                                            {
+                                                <span>@tag</span>
+                                            }
+                                        </span>
+                                    }
+                                </span>
+                                <span class="birkan-exp-more">İncele <span aria-hidden="true">→</span></span>
+                            </button>
                         </li>
                     }
                 </ol>
@@ -336,6 +390,60 @@
                         }
                     </ul>
                 </div>
+            }
+        </div>
+    </dialog>
+}
+
+@for (var i = 0; i < Model.Experience.Items.Count; i++)
+{
+    var job = Model.Experience.Items[i];
+    var logo = BirkanSafe.MediaPath(job.Logo);
+    <dialog class="birkan-drawer birkan-drawer-exp" id="birkan-exp-@i" aria-labelledby="birkan-exp-@i-title">
+        <div class="birkan-drawer-inner">
+            <div class="birkan-drawer-bar">
+                <span class="birkan-project-badge">@job.Category</span>
+                <button class="birkan-drawer-close" type="button" data-birkan-close aria-label="Kapat">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9m0-9-9 9" /></svg>
+                </button>
+            </div>
+            @if (!string.IsNullOrEmpty(logo))
+            {
+                <div class="birkan-drawer-logo"><img src="@logo" alt="@job.Company" loading="lazy" /></div>
+            }
+            <h3 class="birkan-drawer-title" id="birkan-exp-@i-title">@job.Company</h3>
+            <p class="birkan-drawer-period">@job.Start@(string.IsNullOrEmpty(job.End) ? "" : $" — {job.End}")@(string.IsNullOrEmpty(job.Location) ? "" : $" · {job.Location}")</p>
+            @if (!string.IsNullOrEmpty(job.Intro))
+            {
+                <p class="birkan-drawer-intro">@job.Intro</p>
+            }
+            @if (job.Blocks.Count > 0)
+            {
+                <div class="birkan-drawer-blocks">
+                    @foreach (var block in job.Blocks)
+                    {
+                        <div class="birkan-drawer-block">
+                            <h4>@block.Heading</h4>
+                            <p>@block.Text</p>
+                        </div>
+                    }
+                </div>
+            }
+            @if (job.Highlights.Count > 0)
+            {
+                <div class="birkan-drawer-block">
+                    <h4>@job.ListTitle</h4>
+                    <ol class="birkan-drawer-numbered">
+                        @foreach (var h in job.Highlights)
+                        {
+                            <li>@h</li>
+                        }
+                    </ol>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(job.Note))
+            {
+                <p class="birkan-drawer-note"><strong>Not:</strong> @job.Note</p>
             }
         </div>
     </dialog>

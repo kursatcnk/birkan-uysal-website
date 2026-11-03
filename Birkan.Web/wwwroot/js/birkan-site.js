@@ -153,7 +153,7 @@
   const heroImg = heroPortrait?.querySelector("img");
 
   gsap.set(heroChars, { yPercent: 115 });
-  gsap.set([".birkan-hero-meta", ".birkan-hero-intro", ".birkan-hero-actions > *"], { y: 24, opacity: 0 });
+  gsap.set(".birkan-hero-meta, .birkan-hero-specialty, .birkan-hero-intro, .birkan-hero-actions > *", { y: 24, opacity: 0 });
   gsap.set(heroPortrait, { clipPath: "inset(100% 0% 0% 0%)" });
   gsap.set(heroImg, { scale: 1.35 });
 
@@ -173,7 +173,7 @@
     .to(heroImg, { scale: 1.08, duration: 1.8, ease: "power3.out" }, "<")
     .to(heroChars, { yPercent: 0, duration: 1.1, stagger: 0.032 }, "-=1.45")
     .to(".birkan-hero-meta", { y: 0, opacity: 1, duration: 0.9 }, "-=0.9")
-    .to(".birkan-hero-intro", { y: 0, opacity: 1, duration: 0.9 }, "-=0.75")
+    .to(".birkan-hero-specialty, .birkan-hero-intro", { y: 0, opacity: 1, duration: 0.9, stagger: 0.1 }, "-=0.75")
     .to(".birkan-hero-actions > *", { y: 0, opacity: 1, duration: 0.8, stagger: 0.08 }, "-=0.7");
 
   // Girişten çıkarken portre yavaş, metin hızlı kayıyor (derinlik hissi).
@@ -252,6 +252,20 @@
   }
   const aboutTop = document.querySelector(".birkan-about-top");
   if (aboutTop) birkanRuleFrom(aboutTop);
+
+  // Sayılar ekrana girince sıfırdan yukarı sayıyor.
+  document.querySelectorAll("[data-birkan-count]").forEach((el) => {
+    const target = Number(el.dataset.birkanCount);
+    if (!Number.isFinite(target)) return;
+    const counter = { value: 0 };
+    gsap.to(counter, {
+      value: target,
+      duration: 1.6,
+      ease: "power2.out",
+      onUpdate: () => (el.textContent = Math.round(counter.value).toString()),
+      scrollTrigger: { trigger: el, start: "top 90%" }
+    });
+  });
 
   // İletişim bölümüne girerken zemin aşağıdan yukarı açılıyor.
   gsap.from(".birkan-contact", {
