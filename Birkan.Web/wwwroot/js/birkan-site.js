@@ -5,7 +5,7 @@
   const birkanBody = document.body;
   const birkanReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Ön yükleyici kısa; sayfa hazır olunca kalkıyor, isim satırları yukarı kayarak geliyor.
+  // Yükleme ekranı kısa; sayfa hazır olunca kalkıyor, isim satırları aşağıdan yükseliyor.
   function birkanFinishLoading() {
     birkanBody.classList.remove("birkan-is-loading");
     requestAnimationFrame(() => birkanBody.classList.add("birkan-is-ready"));
@@ -43,30 +43,16 @@
     if (e.target.closest("a")) birkanSetMenu(false);
   });
 
-  // Giriş fotoğrafı: sahne boyunca kaydırdıkça çerçeve kenarlara açılıyor.
-  const birkanStage = document.getElementById("birkan-hero-stage");
-  const birkanFrame = birkanStage?.querySelector(".birkan-hero-frame");
-
-  function birkanOnHeroScroll() {
-    if (!birkanFrame || birkanReduced) return;
-    const rect = birkanStage.getBoundingClientRect();
-    const travel = rect.height - window.innerHeight;
-    const progress = Math.min(1, Math.max(0, (window.innerHeight * 0.6 - rect.top) / (travel + window.innerHeight * 0.6)));
-    birkanFrame.style.setProperty("--birkan-expand", progress.toFixed(4));
-  }
-
   let birkanTicking = false;
   window.addEventListener("scroll", () => {
     if (birkanTicking) return;
     birkanTicking = true;
     requestAnimationFrame(() => {
       birkanOnNavScroll();
-      birkanOnHeroScroll();
       birkanTicking = false;
     });
   }, { passive: true });
   birkanOnNavScroll();
-  birkanOnHeroScroll();
 
   // Kaydırınca beliren öğeler
   const birkanRevealer = new IntersectionObserver((entries) => {
