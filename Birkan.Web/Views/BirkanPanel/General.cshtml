@@ -11,11 +11,9 @@
         <header class="birkan-card-head"><h3>Kimlik</h3></header>
         <div class="birkan-grid-2">
             @BirkanField.Text("Ad soyad", "Site.Name", s.Name)
-            @BirkanField.Text("Unvan", "Site.Role", s.Role, hint: "Giriş bölümünün üstünde küçük etiket olarak görünür.")
+            @BirkanField.Text("Unvan", "Site.Role", s.Role, hint: "Giriş bölümünde ismin altında görünür.")
             @BirkanField.Text("Tarayıcı sekmesi başlığı", "Site.Title", s.Title)
             @BirkanField.Text("Arama motoru açıklaması", "Site.MetaDescription", s.MetaDescription)
-            @BirkanField.Image("Logo", "Site.Logo", s.Logo, "logo", hint: "Boş bırakılırsa menüde isim ve baş harfler görünür.")
-            @BirkanField.Image("Küçük portre", "Site.Avatar", s.Avatar, "photo")
         </div>
     </section>
 
@@ -23,7 +21,7 @@
         <header class="birkan-card-head"><h3>Giriş bölümü</h3></header>
         <div class="birkan-grid-2">
             @BirkanField.Text("Büyük başlık (isim)", "Hero.Name", h.Name)
-            @BirkanField.Image("Giriş fotoğrafı", "Hero.Photo", h.Photo, "photo", hint: "Geniş ekranda tam sayfa açılır; yatay ya da kare, en az 1800 piksel önerilir.")
+            @BirkanField.Image("Giriş fotoğrafı", "Hero.Photo", h.Photo, "photo", hint: "Sitede siyah-beyaz gösterilir; dikey ya da kare fotoğraf önerilir.")
         </div>
         @BirkanField.Area("Kısa tanıtım", "Hero.Text", h.Text, rows: 3)
 

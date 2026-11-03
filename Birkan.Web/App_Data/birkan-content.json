@@ -5,7 +5,7 @@
     "name": "Birkan Uysal",
     "role": "Makine Mühendisi",
     "logo": "",
-    "avatar": "/birkan-media/birkan-portrait-480.webp",
+    "avatar": "",
     "nav": {
       "home": "Ana Sayfa",
       "about": "Hakkımda",
@@ -44,7 +44,7 @@
       "Üretim Bilgisi",
       "Teknik Resim"
     ],
-    "photo": "/birkan-media/birkan-portrait-1200.webp",
+    "photo": "",
     "badgeTop": "Makine",
     "badgeBottom": "Mühendisi"
   },
