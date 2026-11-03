@@ -95,7 +95,6 @@ public sealed class BirkanExperience
 public sealed class BirkanSkill
 {
     public string Name { get; set; } = "";
-    public string Icon { get; set; } = "";
 }
 
 public sealed class BirkanProject

@@ -11,8 +11,7 @@ public sealed class BirkanMediaService(IWebHostEnvironment env)
     private static readonly Dictionary<string, int> MaxWidths = new()
     {
         ["logo"] = 800,
-        ["photo"] = 2400,
-        ["icon"] = 256
+        ["photo"] = 2400
     };
 
     private readonly string _uploadDir = Path.Combine(env.WebRootPath, "birkan-media", "uploads");

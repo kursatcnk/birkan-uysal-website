@@ -1,16 +1,13 @@
 @model BirkanSection<BirkanSkill>
 @{
     ViewData["Title"] = "Yetenekler";
-    ViewData["Lead"] = "Araçlar sitede dörtlü ızgarada bu sırayla görünür. İkonlar sitenin rengine boyanır; şeffaf zeminli PNG en iyi sonucu verir.";
+    ViewData["Lead"] = "Araçlar sitede numaralı bir parça listesi olarak, burada sıralandığı düzende görünür.";
 
     async Task Item(BirkanSkill e)
     {
         <article class="birkan-item birkan-item-compact" data-birkan-item>
             <partial name="_BirkanItemControls" model="@(string.IsNullOrEmpty(e.Name) ? "Yeni yetenek" : e.Name)" />
-            <div class="birkan-item-body birkan-item-with-media">
-                @BirkanField.Image("İkon", "Icon", e.Icon, "icon", rel: true)
-                <div data-birkan-title-source>@BirkanField.Text("Ad", "Name", e.Name, rel: true)</div>
-            </div>
+            <div data-birkan-title-source>@BirkanField.Text("Ad", "Name", e.Name, rel: true)</div>
         </article>
     }
 }

@@ -21,7 +21,10 @@
     "text": "Makine tasarımı, teknik çizim ve üretim süreçlerine odaklanan çözüm odaklı bir makine mühendisi.",
     "photo": "/birkan-media/birkan-hero-1800.webp",
     "socials": [
-      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/birkan-uysal-a63161a6/" }
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/birkan-uysal-a63161a6/"
+      }
     ]
   },
   "about": {
@@ -49,9 +52,30 @@
     "title": "Eğitim",
     "description": "",
     "items": [
-      { "school": "Ankara Bahçelievler Deneme Lisesi", "faculty": "", "department": "", "degree": "Lise", "years": "", "logo": "" },
-      { "school": "Kastamonu Üniversitesi", "faculty": "Kastamonu Meslek Yüksek Okulu", "department": "", "degree": "Önlisans", "years": "", "logo": "" },
-      { "school": "Karadeniz Teknik Üniversitesi", "faculty": "Mühendislik Fakültesi", "department": "Makine Mühendisliği", "degree": "Lisans", "years": "", "logo": "" }
+      {
+        "school": "Ankara Bahçelievler Deneme Lisesi",
+        "faculty": "",
+        "department": "",
+        "degree": "Lise",
+        "years": "",
+        "logo": ""
+      },
+      {
+        "school": "Kastamonu Üniversitesi",
+        "faculty": "Kastamonu Meslek Yüksek Okulu",
+        "department": "",
+        "degree": "Önlisans",
+        "years": "",
+        "logo": ""
+      },
+      {
+        "school": "Karadeniz Teknik Üniversitesi",
+        "faculty": "Mühendislik Fakültesi",
+        "department": "Makine Mühendisliği",
+        "degree": "Lisans",
+        "years": "",
+        "logo": ""
+      }
     ]
   },
   "experience": {
@@ -63,18 +87,42 @@
     "title": "Yetenekler",
     "description": "Teknik yetkinliklerim ve kullandığım mühendislik araçları.",
     "items": [
-      { "name": "Solidworks", "icon": "/birkan-media/skills/birkan-skill-solidworks.svg" },
-      { "name": "Solidworks Simulation", "icon": "/birkan-media/skills/birkan-skill-simulation.svg" },
-      { "name": "Catia", "icon": "/birkan-media/skills/birkan-skill-catia.svg" },
-      { "name": "Siemens NX", "icon": "/birkan-media/skills/birkan-skill-nx.svg" },
-      { "name": "Ansys", "icon": "/birkan-media/skills/birkan-skill-ansys.svg" },
-      { "name": "AutoCAD", "icon": "/birkan-media/skills/birkan-skill-autocad.svg" },
-      { "name": "PDM", "icon": "/birkan-media/skills/birkan-skill-pdm.svg" },
-      { "name": "PLM", "icon": "/birkan-media/skills/birkan-skill-plm.svg" },
-      { "name": "SAP", "icon": "/birkan-media/skills/birkan-skill-sap.svg" },
-      { "name": "Canias", "icon": "/birkan-media/skills/birkan-skill-canias.svg" },
-      { "name": "Microsoft Dynamics 365", "icon": "/birkan-media/skills/birkan-skill-dynamics.svg" },
-      { "name": "Microsoft Office Programları", "icon": "/birkan-media/skills/birkan-skill-office.svg" }
+      {
+        "name": "Solidworks"
+      },
+      {
+        "name": "Solidworks Simulation"
+      },
+      {
+        "name": "Catia"
+      },
+      {
+        "name": "Siemens NX"
+      },
+      {
+        "name": "Ansys"
+      },
+      {
+        "name": "AutoCAD"
+      },
+      {
+        "name": "PDM"
+      },
+      {
+        "name": "PLM"
+      },
+      {
+        "name": "SAP"
+      },
+      {
+        "name": "Canias"
+      },
+      {
+        "name": "Microsoft Dynamics 365"
+      },
+      {
+        "name": "Microsoft Office Programları"
+      }
     ]
   },
   "projects": {
@@ -89,8 +137,14 @@
         "intro": "Savunma sanayi projelerinde mekanik tasarım süreçlerini teknik gereksinimler doğrultusunda ele alarak üretilebilir, güvenilir ve saha şartlarına uygun çözümler geliştirmeye odaklandım. Tasarım kararlarını fonksiyonellik, bakım kolaylığı, montaj uyumu ve revizyon yönetimi açısından değerlendirerek sürece katkı sağladım.",
         "image": "",
         "blocks": [
-          { "heading": "Üstlendiğim Rol", "text": "Mekanik tasarım süreçlerinde teknik beklentileri analiz ederek çözüm geliştirme, tasarım dokümantasyonu hazırlama ve proje ekipleriyle koordineli ilerleme konularında aktif görev aldım." },
-          { "heading": "Yaklaşımım", "text": "Uygulanabilirlik, dayanım, güvenilirlik ve üretim uygunluğunu merkeze alarak sahaya uyumlu ve sürdürülebilir tasarım kararları oluşturmaya odaklandım." }
+          {
+            "heading": "Üstlendiğim Rol",
+            "text": "Mekanik tasarım süreçlerinde teknik beklentileri analiz ederek çözüm geliştirme, tasarım dokümantasyonu hazırlama ve proje ekipleriyle koordineli ilerleme konularında aktif görev aldım."
+          },
+          {
+            "heading": "Yaklaşımım",
+            "text": "Uygulanabilirlik, dayanım, güvenilirlik ve üretim uygunluğunu merkeze alarak sahaya uyumlu ve sürdürülebilir tasarım kararları oluşturmaya odaklandım."
+          }
         ],
         "listTitle": "Öne Çıkan Çalışmalar",
         "highlights": [
@@ -108,8 +162,14 @@
         "intro": "Özel makine tasarımı projelerinde ihtiyaca özel sistem kurguları geliştirerek mekanik çözümün baştan sona şekillendirilmesinde aktif rol aldım. Tasarım sürecinde işlev, kompakt yerleşim, bakım erişilebilirliği ve üretim kolaylığı arasında dengeli bir yapı kurmaya önem verdim.",
         "image": "",
         "blocks": [
-          { "heading": "Üstlendiğim Rol", "text": "Konsept geliştirme, 3D modelleme, teknik resim oluşturma ve montaj detaylandırma süreçlerinde görev alarak ihtiyaca özel mekanik sistemlerin tasarımını destekledim." },
-          { "heading": "Yaklaşımım", "text": "Tasarımı yalnızca teorik olarak değil, imalat, montaj, bakım ve devreye alma süreçleriyle birlikte değerlendirerek verimli ve uygulanabilir sonuçlar üretmeye odaklandım." }
+          {
+            "heading": "Üstlendiğim Rol",
+            "text": "Konsept geliştirme, 3D modelleme, teknik resim oluşturma ve montaj detaylandırma süreçlerinde görev alarak ihtiyaca özel mekanik sistemlerin tasarımını destekledim."
+          },
+          {
+            "heading": "Yaklaşımım",
+            "text": "Tasarımı yalnızca teorik olarak değil, imalat, montaj, bakım ve devreye alma süreçleriyle birlikte değerlendirerek verimli ve uygulanabilir sonuçlar üretmeye odaklandım."
+          }
         ],
         "listTitle": "Öne Çıkan Çalışmalar",
         "highlights": [
@@ -127,8 +187,14 @@
         "intro": "Farklı proje ihtiyaçlarında mühendislik bakış açısıyla analiz, iyileştirme ve uygulama odaklı çözümler üreterek sürecin teknik tarafında etkin görev aldım. Hedefim problemi doğru tanımlayıp çözümü yalnızca teorik değil, sahada uygulanabilir hale getirmek oldu.",
         "image": "",
         "blocks": [
-          { "heading": "Üstlendiğim Rol", "text": "Teknik değerlendirme, alternatif çözüm geliştirme, çizim kontrolü ve iyileştirme önerileri oluşturma konularında proje ekiplerine destek vererek sürece katkı sağladım." },
-          { "heading": "Yaklaşımım", "text": "Fonksiyonel, verimli ve sürdürülebilir sonuçlar için tasarım ile operasyon tarafını birlikte değerlendirip karar süreçlerini uygulama odaklı ilerlettim." }
+          {
+            "heading": "Üstlendiğim Rol",
+            "text": "Teknik değerlendirme, alternatif çözüm geliştirme, çizim kontrolü ve iyileştirme önerileri oluşturma konularında proje ekiplerine destek vererek sürece katkı sağladım."
+          },
+          {
+            "heading": "Yaklaşımım",
+            "text": "Fonksiyonel, verimli ve sürdürülebilir sonuçlar için tasarım ile operasyon tarafını birlikte değerlendirip karar süreçlerini uygulama odaklı ilerlettim."
+          }
         ],
         "listTitle": "Öne Çıkan Çalışmalar",
         "highlights": [
@@ -144,8 +210,18 @@
     "title": "İletişim",
     "description": "Bana aşağıdaki iletişim bilgileri üzerinden ulaşabilirsiniz.",
     "items": [
-      { "type": "email", "label": "E-Posta", "value": "info@birkanuysal.com", "url": "mailto:info@birkanuysal.com" },
-      { "type": "location", "label": "Konum", "value": "Ankara", "url": "" }
+      {
+        "type": "email",
+        "label": "E-Posta",
+        "value": "info@birkanuysal.com",
+        "url": "mailto:info@birkanuysal.com"
+      },
+      {
+        "type": "location",
+        "label": "Konum",
+        "value": "Ankara",
+        "url": ""
+      }
     ]
   }
 }
