@@ -79,15 +79,12 @@
   });
 
   // Proje detayları sağdan açılan panelde
-  let birkanLenis = null;
-
   document.querySelectorAll("[data-birkan-open]").forEach((button) => {
     button.addEventListener("click", () => {
       const drawer = document.getElementById(button.dataset.birkanOpen);
       if (!drawer) return;
       drawer.showModal();
       document.body.classList.add("birkan-has-dialog");
-      birkanLenis?.stop();
     });
   });
 
@@ -98,10 +95,7 @@
       const outside = e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
       if (outside || e.target.closest("[data-birkan-close]")) drawer.close();
     });
-    drawer.addEventListener("close", () => {
-      document.body.classList.remove("birkan-has-dialog");
-      birkanLenis?.start();
-    });
+    drawer.addEventListener("close", () => document.body.classList.remove("birkan-has-dialog"));
   });
 
   if (!birkanCanAnimate) {
@@ -114,25 +108,6 @@
   const gsap = window.gsap;
   gsap.registerPlugin(window.ScrollTrigger);
   const ScrollTrigger = window.ScrollTrigger;
-
-  // Yumuşak kaydırma; menü bağlantıları da aynı yumuşaklıkla kayıyor.
-  if (window.Lenis) {
-    // lerp yükseldikçe sayfa tekerleğe daha çabuk yetişiyor; çarpan tek tıkta biraz daha fazla yol aldırıyor.
-    birkanLenis = new window.Lenis({ lerp: 0.16, wheelMultiplier: 1.25, smoothWheel: true });
-    birkanLenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add((time) => birkanLenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
-    birkanLenis.stop();
-
-    document.querySelectorAll('a[href^="#"]').forEach((a) => {
-      a.addEventListener("click", (e) => {
-        const target = document.querySelector(a.getAttribute("href"));
-        if (!target) return;
-        e.preventDefault();
-        birkanLenis.scrollTo(target, { offset: target.id === "birkan-home" ? 0 : -72, duration: 1.4 });
-      });
-    });
-  }
 
   // Metni kelimelere (ya da harflere) böler; <em> gibi iç öğeler korunuyor.
   function birkanSplit(el, byChar) {
@@ -186,7 +161,6 @@
     defaults: { ease: "power4.out" },
     onComplete: () => {
       birkanRoot.classList.add("birkan-intro-done");
-      birkanLenis?.start();
       ScrollTrigger.refresh();
     }
   });
