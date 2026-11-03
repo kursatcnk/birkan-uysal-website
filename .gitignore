@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+*.user
+
+# Sunucuda oluşan çalışma verileri: panel hesabı, oturum anahtarları, yedekler ve yüklenen görseller
+Birkan.Web/App_Data/birkan-admin.json
+Birkan.Web/App_Data/birkan-keys/
+Birkan.Web/App_Data/birkan-backups/
+Birkan.Web/wwwroot/birkan-media/uploads/

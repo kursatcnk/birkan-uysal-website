@@ -1,0 +1,151 @@
+{
+  "site": {
+    "title": "Birkan Uysal | Makine Mühendisi",
+    "metaDescription": "Birkan Uysal makine mühendisi kişisel web sitesi",
+    "name": "Birkan Uysal",
+    "role": "Makine Mühendisi",
+    "logo": "",
+    "avatar": "/birkan-media/birkan-portrait-480.webp",
+    "nav": {
+      "home": "Ana Sayfa",
+      "about": "Hakkımda",
+      "education": "Eğitim",
+      "experience": "Deneyim",
+      "skills": "Yetenekler",
+      "projects": "Projeler",
+      "contact": "İletişim"
+    }
+  },
+  "hero": {
+    "name": "Birkan Uysal",
+    "text": "Makine tasarımı, teknik çizim ve üretim süreçlerine odaklanan çözüm odaklı bir makine mühendisi.",
+    "photo": "/birkan-media/birkan-hero-1800.webp",
+    "socials": [
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/birkan-uysal-a63161a6/" }
+    ]
+  },
+  "about": {
+    "title": "Hakkımda",
+    "greeting": "Merhaba, ben",
+    "greetingName": "Birkan Uysal",
+    "bio": "Makine mühendisliği alanında; mekanik tasarım, teknik çizim, üretim planlama ve süreç iyileştirme konularına odaklanıyorum. Her projede verimlilik, uygulanabilirlik ve teknik güvenilirliği ön planda tutarak işlevsel çözümler geliştirmeyi hedefliyorum.",
+    "expertiseTitle": "Uzmanlık Alanlarım",
+    "expertiseDescription": "Mühendislik projelerinde öne çıkan teknik yetkinliklerim ve çalışma alanlarım aşağıda yer almaktadır.",
+    "expertise": [
+      "Mekanik Tasarım",
+      "Parça ve Mekanizma Tasarımı",
+      "Mekanik Simülasyon",
+      "Yapısal Analiz",
+      "Arge",
+      "Kalite Kontrol",
+      "Üretim Bilgisi",
+      "Teknik Resim"
+    ],
+    "photo": "/birkan-media/birkan-portrait-1200.webp",
+    "badgeTop": "Makine",
+    "badgeBottom": "Mühendisi"
+  },
+  "education": {
+    "title": "Eğitim",
+    "description": "",
+    "items": [
+      { "school": "Ankara Bahçelievler Deneme Lisesi", "faculty": "", "department": "", "degree": "Lise", "years": "", "logo": "" },
+      { "school": "Kastamonu Üniversitesi", "faculty": "Kastamonu Meslek Yüksek Okulu", "department": "", "degree": "Önlisans", "years": "", "logo": "" },
+      { "school": "Karadeniz Teknik Üniversitesi", "faculty": "Mühendislik Fakültesi", "department": "Makine Mühendisliği", "degree": "Lisans", "years": "", "logo": "" }
+    ]
+  },
+  "experience": {
+    "title": "Deneyim",
+    "description": "",
+    "items": []
+  },
+  "skills": {
+    "title": "Yetenekler",
+    "description": "Teknik yetkinliklerim ve kullandığım mühendislik araçları.",
+    "items": [
+      { "name": "Solidworks", "icon": "/birkan-media/skills/birkan-skill-solidworks.svg" },
+      { "name": "Solidworks Simulation", "icon": "/birkan-media/skills/birkan-skill-simulation.svg" },
+      { "name": "Catia", "icon": "/birkan-media/skills/birkan-skill-catia.svg" },
+      { "name": "Siemens NX", "icon": "/birkan-media/skills/birkan-skill-nx.svg" },
+      { "name": "Ansys", "icon": "/birkan-media/skills/birkan-skill-ansys.svg" },
+      { "name": "AutoCAD", "icon": "/birkan-media/skills/birkan-skill-autocad.svg" },
+      { "name": "PDM", "icon": "/birkan-media/skills/birkan-skill-pdm.svg" },
+      { "name": "PLM", "icon": "/birkan-media/skills/birkan-skill-plm.svg" },
+      { "name": "SAP", "icon": "/birkan-media/skills/birkan-skill-sap.svg" },
+      { "name": "Canias", "icon": "/birkan-media/skills/birkan-skill-canias.svg" },
+      { "name": "Microsoft Dynamics 365", "icon": "/birkan-media/skills/birkan-skill-dynamics.svg" },
+      { "name": "Microsoft Office Programları", "icon": "/birkan-media/skills/birkan-skill-office.svg" }
+    ]
+  },
+  "projects": {
+    "title": "Projeler",
+    "description": "Çalıştığım proje alanlarını aşağıdaki kutulardan inceleyebilir, her başlık altında üstlendiğim görevleri ve mühendislik katkılarımı detaylı olarak görüntüleyebilirsiniz.",
+    "items": [
+      {
+        "badge": "Proje Alanı",
+        "title": "Savunma Sanayi",
+        "excerpt": "Mekanik tasarım, teknik dokümantasyon ve disiplinler arası koordinasyon odaklı proje katkıları.",
+        "hint": "Detayları İncele",
+        "intro": "Savunma sanayi projelerinde mekanik tasarım süreçlerini teknik gereksinimler doğrultusunda ele alarak üretilebilir, güvenilir ve saha şartlarına uygun çözümler geliştirmeye odaklandım. Tasarım kararlarını fonksiyonellik, bakım kolaylığı, montaj uyumu ve revizyon yönetimi açısından değerlendirerek sürece katkı sağladım.",
+        "image": "",
+        "blocks": [
+          { "heading": "Üstlendiğim Rol", "text": "Mekanik tasarım süreçlerinde teknik beklentileri analiz ederek çözüm geliştirme, tasarım dokümantasyonu hazırlama ve proje ekipleriyle koordineli ilerleme konularında aktif görev aldım." },
+          { "heading": "Yaklaşımım", "text": "Uygulanabilirlik, dayanım, güvenilirlik ve üretim uygunluğunu merkeze alarak sahaya uyumlu ve sürdürülebilir tasarım kararları oluşturmaya odaklandım." }
+        ],
+        "listTitle": "Öne Çıkan Çalışmalar",
+        "highlights": [
+          "Parça, alt sistem ve mekanik bileşen tasarımlarının hazırlanması ve geliştirilmesi",
+          "Teknik resim, model revizyonu ve üretim dokümantasyon süreçlerinin desteklenmesi",
+          "Üretim, kalite ve proje ekipleriyle koordineli çalışarak teknik gereksinimlerin takibi",
+          "Fonksiyonellik ve uygulanabilirlik açısından tasarım doğrulama yaklaşımının desteklenmesi"
+        ]
+      },
+      {
+        "badge": "Proje Alanı",
+        "title": "Özel Makine Tasarımı",
+        "excerpt": "İhtiyaca özel makine ve mekanizma kurgularında modelleme, montaj detayları ve üretime uygun tasarım çalışmaları.",
+        "hint": "Detayları İncele",
+        "intro": "Özel makine tasarımı projelerinde ihtiyaca özel sistem kurguları geliştirerek mekanik çözümün baştan sona şekillendirilmesinde aktif rol aldım. Tasarım sürecinde işlev, kompakt yerleşim, bakım erişilebilirliği ve üretim kolaylığı arasında dengeli bir yapı kurmaya önem verdim.",
+        "image": "",
+        "blocks": [
+          { "heading": "Üstlendiğim Rol", "text": "Konsept geliştirme, 3D modelleme, teknik resim oluşturma ve montaj detaylandırma süreçlerinde görev alarak ihtiyaca özel mekanik sistemlerin tasarımını destekledim." },
+          { "heading": "Yaklaşımım", "text": "Tasarımı yalnızca teorik olarak değil, imalat, montaj, bakım ve devreye alma süreçleriyle birlikte değerlendirerek verimli ve uygulanabilir sonuçlar üretmeye odaklandım." }
+        ],
+        "listTitle": "Öne Çıkan Çalışmalar",
+        "highlights": [
+          "İhtiyaca yönelik makine ve mekanizma konseptlerinin modellenmesi",
+          "3D tasarım, teknik resim ve montaj detaylarının oluşturulması",
+          "İmalat yöntemlerine uygun tasarım iyileştirmeleri ve parça optimizasyonları yapılması",
+          "Prototip, montaj ve devreye alma süreçlerinde teknik destek sağlanması"
+        ]
+      },
+      {
+        "badge": "Proje Alanı",
+        "title": "Mühendislik Çözümleri",
+        "excerpt": "Analiz, süreç iyileştirme ve sahada uygulanabilir çözüm üretimi odaklı mühendislik desteği.",
+        "hint": "Detayları İncele",
+        "intro": "Farklı proje ihtiyaçlarında mühendislik bakış açısıyla analiz, iyileştirme ve uygulama odaklı çözümler üreterek sürecin teknik tarafında etkin görev aldım. Hedefim problemi doğru tanımlayıp çözümü yalnızca teorik değil, sahada uygulanabilir hale getirmek oldu.",
+        "image": "",
+        "blocks": [
+          { "heading": "Üstlendiğim Rol", "text": "Teknik değerlendirme, alternatif çözüm geliştirme, çizim kontrolü ve iyileştirme önerileri oluşturma konularında proje ekiplerine destek vererek sürece katkı sağladım." },
+          { "heading": "Yaklaşımım", "text": "Fonksiyonel, verimli ve sürdürülebilir sonuçlar için tasarım ile operasyon tarafını birlikte değerlendirip karar süreçlerini uygulama odaklı ilerlettim." }
+        ],
+        "listTitle": "Öne Çıkan Çalışmalar",
+        "highlights": [
+          "Mekanik sistemlerde iyileştirme, performans artırma ve süreç geliştirme çalışmaları",
+          "Teknik değerlendirme, çizim kontrolü ve çözüm alternatiflerinin karşılaştırılması",
+          "Üretim, kalite ve operasyon ekipleriyle uygulanabilir mühendislik kararlarının oluşturulması",
+          "Fonksiyonel ve sürdürülebilir sonuçlar için tasarım ve süreç desteği verilmesi"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "İletişim",
+    "description": "Bana aşağıdaki iletişim bilgileri üzerinden ulaşabilirsiniz.",
+    "items": [
+      { "type": "email", "label": "E-Posta", "value": "info@birkanuysal.com", "url": "mailto:info@birkanuysal.com" },
+      { "type": "location", "label": "Konum", "value": "Ankara", "url": "" }
+    ]
+  }
+}
