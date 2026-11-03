@@ -41,6 +41,29 @@ public static class BirkanField
             """, tag: "div");
     }
 
+    // PDF belge alanı (özgeçmiş gibi): görsel alanıyla aynı yükleme akışını kullanıyor, önizlemede dosya bağlantısı görünüyor.
+    public static IHtmlContent Document(string label, string name, string? value, bool rel = false, string? hint = null)
+    {
+        var v = Enc.Encode(value ?? "");
+        var preview = string.IsNullOrEmpty(value)
+            ? "<span class=\"birkan-image-empty\">Belge yok</span>"
+            : $"<a href=\"{v}\" target=\"_blank\" rel=\"noopener\" class=\"birkan-doc-link\">PDF</a>";
+        return Wrap(label, hint, $"""
+            <div class="birkan-image-field" data-birkan-image data-kind="document">
+              <div class="birkan-image-preview birkan-image-preview-document">{preview}</div>
+              <input type="hidden" {NameAttr(name, rel)} value="{v}" data-birkan-image-value />
+              <div class="birkan-image-actions">
+                <label class="birkan-btn birkan-btn-ghost birkan-btn-sm">
+                  <input type="file" accept="application/pdf" hidden data-birkan-image-file />
+                  PDF seç
+                </label>
+                <button type="button" class="birkan-btn birkan-btn-link birkan-btn-sm" data-birkan-image-clear>Kaldır</button>
+                <span class="birkan-image-status" data-birkan-image-status></span>
+              </div>
+            </div>
+            """, tag: "div");
+    }
+
     private static string NameAttr(string name, bool rel) =>
         rel ? $"data-birkan-name=\"{Enc.Encode(name)}\"" : $"name=\"{Enc.Encode(name)}\"";
 

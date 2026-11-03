@@ -95,7 +95,7 @@ public sealed class BirkanPanelController(
     public IActionResult Experience() => View(store.Current.Experience);
 
     [HttpPost("deneyim")]
-    public Task<IActionResult> Experience(BirkanSection<BirkanExperience> form) =>
+    public Task<IActionResult> Experience(BirkanExperienceSection form) =>
         SaveAsync(nameof(Experience), c => c.Experience = BirkanSafe.Normalize(form));
 
     [HttpGet("yetenekler")]
@@ -128,7 +128,8 @@ public sealed class BirkanPanelController(
         if (file is null) return BadRequest(new { error = "Dosya seçilmedi." });
         try
         {
-            return Json(new { path = await media.SaveAsync(file, kind) });
+            var path = kind == "document" ? await media.SaveDocumentAsync(file) : await media.SaveAsync(file, kind);
+            return Json(new { path });
         }
         catch (BirkanMediaException ex)
         {

@@ -1,24 +1,54 @@
-@model BirkanSection<BirkanExperience>
+@model BirkanExperienceSection
 @{
-    ViewData["Title"] = "Deneyim";
-    ViewData["Lead"] = "İş tecrübeleri. En az bir kayıt olduğunda sitede Deneyim bölümü ve menü bağlantısı kendiliğinden açılır.";
+    ViewData["Title"] = "Deneyimler";
+    ViewData["Lead"] = "Çalışılan kurumlar. Sitede bu sırayla, en üstteki ilk görünür; satıra tıklanınca ayrıntılar sağdan açılan panelde gösterilir.";
+
+    async Task Block(BirkanProjectBlock b)
+    {
+        <article class="birkan-item birkan-item-nested" data-birkan-item>
+            <partial name="_BirkanItemControls" model="@(string.IsNullOrEmpty(b.Heading) ? "Yeni blok" : b.Heading)" />
+            <div data-birkan-title-source>@BirkanField.Text("Blok başlığı", "Heading", b.Heading, rel: true, placeholder: "Pozisyon, Odak Alanı…")</div>
+            @BirkanField.Area("Metin", "Text", b.Text, rel: true, rows: 3)
+        </article>
+    }
 
     async Task Item(BirkanExperience e)
     {
         <article class="birkan-item" data-birkan-item>
             <partial name="_BirkanItemControls" model="@(string.IsNullOrEmpty(e.Company) ? "Yeni deneyim" : e.Company)" />
             <div class="birkan-item-body birkan-item-with-media">
-                @BirkanField.Image("Şirket logosu", "Logo", e.Logo, "logo", rel: true)
+                @BirkanField.Image("Şirket logosu", "Logo", e.Logo, "logo", rel: true, hint: "Sitede gri tonlu durur, üzerine gelince renklenir.")
                 <div class="birkan-grid-2">
                     <div data-birkan-title-source>@BirkanField.Text("Şirket", "Company", e.Company, rel: true)</div>
-                    @BirkanField.Text("Görev", "Position", e.Position, rel: true, placeholder: "Makine Mühendisi")
-                    @BirkanField.Text("Başlangıç", "Start", e.Start, rel: true, placeholder: "Mart 2021")
-                    @BirkanField.Text("Bitiş", "End", e.End, rel: true, placeholder: "Devam ediyor")
-                    @BirkanField.Text("Konum", "Location", e.Location, rel: true, placeholder: "Ankara")
+                    @BirkanField.Text("Alan", "Category", e.Category, rel: true, placeholder: "Savunma Sanayi")
+                    @BirkanField.Text("Başlangıç", "Start", e.Start, rel: true, placeholder: "2021", hint: "Yıl yazılırsa bölüm özetindeki yıl aralığına katılır.")
+                    @BirkanField.Text("Bitiş", "End", e.End, rel: true, placeholder: "2026 ya da 1 Yıl")
+                    @BirkanField.Text("Görev", "Position", e.Position, rel: true, placeholder: "Mekanik Tasarım Mühendisi")
+                    @BirkanField.Text("Konum", "Location", e.Location, rel: true, placeholder: "Ankara", hint: "İsteğe bağlı.")
                 </div>
             </div>
-            @BirkanField.Area("Açıklama", "Description", e.Description, rel: true, rows: 4)
-            <partial name="_BirkanStringList" model="@(("Highlights", "Öne çıkan işler", "Madde ekle", e.Highlights))" />
+            @BirkanField.Area("Kart özeti", "Description", e.Description, rel: true, rows: 2, hint: "Listede şirket adının altında görünür.")
+            <partial name="_BirkanStringList" model="@(("Tags", "Etiketler", "Etiket ekle", e.Tags))" />
+
+            <details class="birkan-details" open="@(string.IsNullOrEmpty(e.Company))">
+                <summary>Detay paneli</summary>
+                @BirkanField.Area("Giriş paragrafı", "Intro", e.Intro, rel: true, rows: 4)
+
+                <div class="birkan-field">
+                    <span class="birkan-field-label">Metin blokları</span>
+                    <div class="birkan-repeater" data-birkan-repeater="Blocks">
+                        <div class="birkan-repeater-list birkan-grid-2" data-birkan-list>
+                            @foreach (var b in e.Blocks) { await Block(b); }
+                        </div>
+                        <template data-birkan-template>@{ await Block(new BirkanProjectBlock()); }</template>
+                        <button type="button" class="birkan-btn birkan-btn-ghost birkan-btn-sm" data-birkan-add>+ Blok ekle</button>
+                    </div>
+                </div>
+
+                @BirkanField.Text("Liste başlığı", "ListTitle", e.ListTitle, rel: true, placeholder: "Başlıca Görev Aldığım Tasarımlar")
+                <partial name="_BirkanStringList" model="@(("Highlights", "Liste maddeleri", "Madde ekle", e.Highlights))" />
+                @BirkanField.Area("Not", "Note", e.Note, rel: true, rows: 2, hint: "İsteğe bağlı. Panelin en altında \"Not:\" başlığıyla görünür.")
+            </details>
         </article>
     }
 }
@@ -28,12 +58,15 @@
         <header class="birkan-card-head"><h3>Bölüm</h3></header>
         <div class="birkan-grid-2">
             @BirkanField.Text("Başlık", "Title", Model.Title)
-            @BirkanField.Text("Alt açıklama", "Description", Model.Description, hint: "Boş bırakılırsa sitede görünmez.")
+            @BirkanField.Text("Üst etiket", "Kicker", Model.Kicker, placeholder: "Deneyim Alanı")
         </div>
+        @BirkanField.Area("Açıklama", "Description", Model.Description, rows: 2)
+        @BirkanField.Text("Özet satırının son kısmı", "MetaNote", Model.MetaNote, placeholder: "Teknik Sorumluluklar",
+            hint: "Kurum sayısı ve yıl aralığı kayıtlardan kendiliğinden hesaplanır; bu yazının üstünde liste maddelerinin toplam sayısı görünür.")
     </section>
 
     <section class="birkan-card">
-        <header class="birkan-card-head"><h3>İş tecrübeleri</h3></header>
+        <header class="birkan-card-head"><h3>Kurumlar</h3></header>
         @if (Model.Items.Count == 0)
         {
             <p class="birkan-empty" data-birkan-empty>Henüz deneyim eklenmedi. Eklediğiniz ilk kayıtla birlikte bölüm sitede görünür.</p>
@@ -42,7 +75,7 @@
             <div class="birkan-repeater-list" data-birkan-list>
                 @foreach (var e in Model.Items) { await Item(e); }
             </div>
-            <template data-birkan-template>@{ await Item(new BirkanExperience()); }</template>
+            <template data-birkan-template>@{ await Item(new BirkanExperience { ListTitle = "Başlıca Görev Aldığım Sorumluluklar" }); }</template>
             <button type="button" class="birkan-btn birkan-btn-ghost" data-birkan-add>+ Deneyim ekle</button>
         </div>
     </section>

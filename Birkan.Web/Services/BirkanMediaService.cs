@@ -21,7 +21,9 @@ public sealed class BirkanMediaService(IWebHostEnvironment env)
         if (file.Length == 0 || file.Length > MaxUploadBytes)
             throw new BirkanMediaException("Dosya boş ya da 15 MB'tan büyük.");
 
-        var maxWidth = MaxWidths.GetValueOrDefault(kind, 2400);
+        // Tür dosya adına giriyor; yalnızca bilinen değerler kabul ediliyor.
+        if (!MaxWidths.TryGetValue(kind, out var maxWidth))
+            throw new BirkanMediaException("Geçersiz görsel türü.");
 
         await using var input = file.OpenReadStream();
         using var source = SKBitmap.Decode(input)
@@ -39,6 +41,38 @@ public sealed class BirkanMediaService(IWebHostEnvironment env)
         var name = $"birkan-{kind}-{DateTime.Now:yyyyMMdd-HHmmss}-{Guid.NewGuid().ToString("N")[..6]}.webp";
         await using (var output = File.Create(Path.Combine(_uploadDir, name)))
             data.SaveTo(output);
+
+        return $"/birkan-media/uploads/{name}";
+    }
+
+    // Özgeçmiş gibi PDF belgeler: gerçekten PDF mi diye başlığına bakılıyor; içinde betik ya da
+    // açılışta çalışan eylem barındıran dosyalar reddediliyor, çünkü site ziyaretçilerine dağıtılıyor.
+    public async Task<string> SaveDocumentAsync(IFormFile file)
+    {
+        if (file.Length == 0 || file.Length > MaxUploadBytes)
+            throw new BirkanMediaException("Dosya boş ya da 15 MB'tan büyük.");
+
+        byte[] bytes;
+        await using (var input = file.OpenReadStream())
+        using (var buffer = new MemoryStream())
+        {
+            await input.CopyToAsync(buffer);
+            bytes = buffer.ToArray();
+        }
+
+        if (bytes.Length < 5 || System.Text.Encoding.ASCII.GetString(bytes, 0, 5) != "%PDF-")
+            throw new BirkanMediaException("Yalnızca PDF dosyası yüklenebilir.");
+
+        var text = System.Text.Encoding.Latin1.GetString(bytes);
+        foreach (var marker in new[] { "/JavaScript", "/JS", "/Launch", "/EmbeddedFile", "/OpenAction", "/RichMedia" })
+        {
+            if (text.Contains(marker, StringComparison.Ordinal))
+                throw new BirkanMediaException("PDF içinde betik ya da otomatik çalışan eylem var; bu dosya yüklenemez.");
+        }
+
+        Directory.CreateDirectory(_uploadDir);
+        var name = $"birkan-doc-{DateTime.Now:yyyyMMdd-HHmmss}-{Guid.NewGuid().ToString("N")[..6]}.pdf";
+        await File.WriteAllBytesAsync(Path.Combine(_uploadDir, name), bytes);
 
         return $"/birkan-media/uploads/{name}";
     }

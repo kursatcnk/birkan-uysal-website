@@ -20,10 +20,18 @@
     <section class="birkan-card">
         <header class="birkan-card-head"><h3>Giriş bölümü</h3></header>
         <div class="birkan-grid-2">
-            @BirkanField.Text("Büyük başlık (isim)", "Hero.Name", h.Name)
+            <div>
+                @BirkanField.Text("Büyük başlık (isim)", "Hero.Name", h.Name)
+                @BirkanField.Text("Alt unvan", "Hero.Specialty", h.Specialty, placeholder: "AR-GE ve Mekanik Tasarım", hint: "İsmin altında turuncu çizgiyle görünür.")
+            </div>
             @BirkanField.Image("Giriş fotoğrafı", "Hero.Photo", h.Photo, "photo", hint: "Sitede siyah-beyaz gösterilir; dikey ya da kare fotoğraf önerilir.")
         </div>
-        @BirkanField.Area("Kısa tanıtım", "Hero.Text", h.Text, rows: 3)
+        @BirkanField.Area("Kısa tanıtım", "Hero.Text", h.Text, rows: 3, hint: "İsteğe bağlı. Boş bırakılırsa girişte gösterilmez.")
+
+        <div class="birkan-grid-2">
+            @BirkanField.Text("Özgeçmiş bağlantı yazısı", "Hero.CvLabel", h.CvLabel, placeholder: "Özgeçmişimi İndir")
+            @BirkanField.Document("Özgeçmiş (PDF)", "Hero.CvFile", h.CvFile, hint: "Boş bırakılırsa indirme bağlantısı gösterilmez.")
+        </div>
 
         <div class="birkan-field">
             <span class="birkan-field-label">Sosyal bağlantılar</span>

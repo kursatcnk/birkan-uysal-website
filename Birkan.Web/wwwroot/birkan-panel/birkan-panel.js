@@ -125,9 +125,19 @@
       const status = field.querySelector("[data-birkan-image-status]");
       const file = field.querySelector("[data-birkan-image-file]");
 
+      const isDocument = field.dataset.kind === "document";
+
       const show = (path) => {
         preview.innerHTML = "";
-        if (path) {
+        if (path && isDocument) {
+          const link = document.createElement("a");
+          link.href = path;
+          link.target = "_blank";
+          link.rel = "noopener";
+          link.className = "birkan-doc-link";
+          link.textContent = "PDF";
+          preview.appendChild(link);
+        } else if (path) {
           const img = document.createElement("img");
           img.src = path;
           img.alt = "";
@@ -135,7 +145,7 @@
         } else {
           const empty = document.createElement("span");
           empty.className = "birkan-image-empty";
-          empty.textContent = "Görsel yok";
+          empty.textContent = isDocument ? "Belge yok" : "Görsel yok";
           preview.appendChild(empty);
         }
       };
