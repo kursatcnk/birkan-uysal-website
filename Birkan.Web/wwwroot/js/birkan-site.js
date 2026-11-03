@@ -117,7 +117,8 @@
 
   // Yumuşak kaydırma; menü bağlantıları da aynı yumuşaklıkla kayıyor.
   if (window.Lenis) {
-    birkanLenis = new window.Lenis({ lerp: 0.085, smoothWheel: true });
+    // lerp yükseldikçe sayfa tekerleğe daha çabuk yetişiyor; çarpan tek tıkta biraz daha fazla yol aldırıyor.
+    birkanLenis = new window.Lenis({ lerp: 0.16, wheelMultiplier: 1.25, smoothWheel: true });
     birkanLenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((time) => birkanLenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
