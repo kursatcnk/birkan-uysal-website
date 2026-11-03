@@ -28,13 +28,13 @@
     <meta name="author" content="@site.Name" />
     <meta property="og:title" content="@site.Title" />
     <meta property="og:description" content="@site.MetaDescription" />
-    <meta property="og:image" content="@Model.Hero.Photo" />
+    <meta property="og:image" content="@BirkanSafe.MediaPath(Model.Hero.Photo)" />
     <meta name="theme-color" content="#f3f1ec" />
     <link rel="icon" href="/birkan-media/birkan-mark.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="preload" as="image" href="@Model.Hero.Photo" />
+    <link rel="preload" as="image" href="@BirkanSafe.MediaPath(Model.Hero.Photo)" />
     <link rel="stylesheet" href="~/css/birkan-site.css" asp-append-version="true" />
 </head>
 <body class="birkan-body birkan-is-loading">
@@ -48,7 +48,7 @@
     <a class="birkan-navbar-brand" href="#birkan-home" aria-label="@site.Name">
         @if (!string.IsNullOrEmpty(site.Logo))
         {
-            <img src="@site.Logo" alt="@site.Name" class="birkan-navbar-logo" />
+            <img src="@BirkanSafe.MediaPath(site.Logo)" alt="@site.Name" class="birkan-navbar-logo" />
         }
         else
         {
@@ -84,7 +84,7 @@
                 <div class="birkan-hero-actions">
                     @foreach (var social in Model.Hero.Socials)
                     {
-                        <a class="birkan-pill" href="@social.Url" target="_blank" rel="noopener noreferrer">
+                        <a class="birkan-pill" href="@BirkanSafe.Url(social.Url)" target="_blank" rel="noopener noreferrer">
                             @social.Label
                             <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
                         </a>
@@ -94,7 +94,7 @@
         </div>
         <div class="birkan-hero-stage" id="birkan-hero-stage">
             <figure class="birkan-hero-frame">
-                <img src="@Model.Hero.Photo" alt="@Model.Hero.Name" fetchpriority="high" />
+                <img src="@BirkanSafe.MediaPath(Model.Hero.Photo)" alt="@Model.Hero.Name" fetchpriority="high" />
             </figure>
         </div>
     </section>
@@ -112,7 +112,7 @@
                     <p class="birkan-about-bio">@Model.About.Bio</p>
                 </div>
                 <figure class="birkan-about-portrait" data-birkan-reveal>
-                    <img src="@Model.About.Photo" alt="@site.Name" loading="lazy" />
+                    <img src="@BirkanSafe.MediaPath(Model.About.Photo)" alt="@site.Name" loading="lazy" />
                     <figcaption class="birkan-about-badge">
                         <span>@Model.About.BadgeTop</span>
                         <span>@Model.About.BadgeBottom</span>
@@ -159,7 +159,7 @@
                         <span class="birkan-timeline-dot" aria-hidden="true"></span>
                         @if (!string.IsNullOrEmpty(item.Logo))
                         {
-                            <img class="birkan-timeline-logo" src="@item.Logo" alt="@item.School" loading="lazy" />
+                            <img class="birkan-timeline-logo" src="@BirkanSafe.MediaPath(item.Logo)" alt="@item.School" loading="lazy" />
                         }
                         <h3 class="birkan-timeline-school">@item.School</h3>
                         @if (!string.IsNullOrEmpty(item.Faculty))
@@ -203,7 +203,7 @@
                                 <div class="birkan-experience-title">
                                     @if (!string.IsNullOrEmpty(job.Logo))
                                     {
-                                        <img class="birkan-experience-logo" src="@job.Logo" alt="@job.Company" loading="lazy" />
+                                        <img class="birkan-experience-logo" src="@BirkanSafe.MediaPath(job.Logo)" alt="@job.Company" loading="lazy" />
                                     }
                                     <div>
                                         <h3>@job.Position</h3>
@@ -246,7 +246,7 @@
                         <span class="birkan-index">@((i + 1).ToString("00"))</span>
                         @if (!string.IsNullOrEmpty(skill.Icon))
                         {
-                            <span class="birkan-skill-icon" style="--birkan-icon:url('@skill.Icon')" aria-hidden="true"></span>
+                            <span class="birkan-skill-icon" style="--birkan-icon:url('@BirkanSafe.MediaPath(skill.Icon)')" aria-hidden="true"></span>
                         }
                         <span class="birkan-skill-name">@skill.Name</span>
                     </li>
@@ -300,7 +300,7 @@
                         <dd>
                             @if (!string.IsNullOrEmpty(item.Url))
                             {
-                                <a href="@item.Url" class="birkan-contact-link">@item.Value</a>
+                                <a href="@BirkanSafe.Url(item.Url)" class="birkan-contact-link">@item.Value</a>
                             }
                             else
                             {
@@ -316,7 +316,7 @@
             <span class="birkan-footer-links">
                 @foreach (var social in Model.Hero.Socials)
                 {
-                    <a href="@social.Url" target="_blank" rel="noopener noreferrer">@social.Label</a>
+                    <a href="@BirkanSafe.Url(social.Url)" target="_blank" rel="noopener noreferrer">@social.Label</a>
                 }
             </span>
         </footer>
@@ -335,7 +335,7 @@
             <h3 class="birkan-dialog-title" id="birkan-project-@i-title">@project.Title</h3>
             @if (!string.IsNullOrEmpty(project.Image))
             {
-                <img class="birkan-dialog-image" src="@project.Image" alt="@project.Title" loading="lazy" />
+                <img class="birkan-dialog-image" src="@BirkanSafe.MediaPath(project.Image)" alt="@project.Title" loading="lazy" />
             }
             <p class="birkan-dialog-intro">@project.Intro</p>
             <div class="birkan-dialog-blocks">
