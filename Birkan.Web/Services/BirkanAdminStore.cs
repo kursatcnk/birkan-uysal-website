@@ -12,7 +12,7 @@ public sealed class BirkanAdminStore
 
     private readonly string _path;
     private readonly PasswordHasher<string> _hasher = new();
-    private readonly Lock _gate = new();
+    private readonly object _gate = new();
     private BirkanAdminAccount _account;
     private int _failures;
     private DateTimeOffset _lockedUntil = DateTimeOffset.MinValue;

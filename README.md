@@ -1,6 +1,6 @@
 # Birkan Uysal | Kişisel Web Sitesi
 
-Makine mühendisi Birkan Uysal için kişisel web sitesi ve sitenin her bölümünü düzenleyen yönetim paneli. ASP.NET Core (.NET 10) ile yazıldı; veritabanı gerektirmez, içerik tek bir JSON dosyasında tutulur.
+Makine mühendisi Birkan Uysal için kişisel web sitesi ve sitenin her bölümünü düzenleyen yönetim paneli. ASP.NET Core (.NET 8) ile yazıldı; veritabanı gerektirmez, içerik tek bir JSON dosyasında tutulur.
 
 ## Yapı
 
