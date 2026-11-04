@@ -5,6 +5,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>ef119e85-4914-4c22-9dbb-742b23262eee</UserSecretsId>
+    <!-- Paylaşımlı hostingde uygulama havuzunun bellek sınırı düşük olabiliyor; sunucu GC'si açılışta büyük bellek
+         ayırmaya çalışıp uygulamayı 500.30 ile düşürebiliyor. Tek kişilik bir site için iş istasyonu GC'si yeterli. -->
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+    <ConcurrentGarbageCollection>false</ConcurrentGarbageCollection>
   </PropertyGroup>
 
   <ItemGroup>
