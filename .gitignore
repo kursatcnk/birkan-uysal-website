@@ -8,3 +8,6 @@ Birkan.Web/App_Data/birkan-admin.json
 Birkan.Web/App_Data/birkan-keys/
 Birkan.Web/App_Data/birkan-backups/
 Birkan.Web/wwwroot/birkan-media/uploads/
+
+# Sunucuya yüklenecek yayın paketi
+publish/
