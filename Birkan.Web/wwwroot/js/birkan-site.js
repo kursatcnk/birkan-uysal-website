@@ -176,6 +176,12 @@
     .to(".birkan-hero-specialty, .birkan-hero-intro", { y: 0, opacity: 1, duration: 0.9, stagger: 0.1 }, "-=0.75")
     .to(".birkan-hero-actions > *", { y: 0, opacity: 1, duration: 0.8, stagger: 0.08 }, "-=0.7");
 
+  // Telefon animasyonu yavaşlatırsa (pil tasarrufu, sayfanın arka planda açılması) giriş bölümü
+  // boş kalmasın: açılış 4,5 saniyede bitmediyse son hâline atlanıyor.
+  setTimeout(() => {
+    if (intro.progress() < 1) intro.progress(1);
+  }, 4500);
+
   // Girişten çıkarken portre yavaş, metin hızlı kayıyor (derinlik hissi).
   gsap.to(heroImg, {
     yPercent: 10,

@@ -199,6 +199,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   position: fixed;
   inset: 0 0 0 auto;
   width: min(640px, 100vw);
+  max-width: none;
   height: 100vh;
   max-height: none;
   margin: 0;
@@ -226,7 +227,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .birkan-drawer-block { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--birkan-line); }
 .birkan-drawer-block h4 { font-size: 15px; font-weight: 500; color: var(--birkan-accent-deep); margin-bottom: 10px; }
 .birkan-drawer-block p { color: var(--birkan-ink-2); }
-body.birkan-has-dialog { overflow: hidden; }
+/* Panel açıkken arkadaki sayfa kaymasın; açılış sonrası "overflow: auto" kuralından daha baskın olmalı. */
+body.birkan-has-dialog,
+.birkan-anim.birkan-intro-done body.birkan-has-dialog { overflow: hidden; }
 
 /* ---- İletişim ---- */
 .birkan-contact { background: var(--birkan-graphite); color: var(--birkan-on-dark); padding-top: clamp(96px, 12vw, 168px); }
@@ -413,7 +416,7 @@ body.birkan-has-dialog { overflow: hidden; }
 
 @media (max-width: 860px) {
   .birkan-exp-head { grid-template-columns: 1fr; }
-  .birkan-exp-stats { grid-template-columns: repeat(3, auto); }
+  .birkan-exp-stats { display: flex; flex-wrap: wrap; row-gap: 18px; }
   .birkan-exp-stats dt { font-size: 22px; white-space: nowrap; }
   .birkan-exp-stats > div { padding-right: 14px; margin-right: 14px; }
   .birkan-exp { grid-template-columns: 1fr auto; grid-template-areas: "logo period" "main main" "more more"; gap: 18px; padding: 28px 0; }
@@ -423,4 +426,12 @@ body.birkan-has-dialog { overflow: hidden; }
   .birkan-exp-main { grid-area: main; }
   .birkan-exp-more { grid-area: more; }
   .birkan-drawer-blocks { grid-template-columns: 1fr; }
+}
+
+/* Telefonda dokunma alanları: metin bağlantıları ve menü adı en az 44 piksel yükseklikte dokunulabilir olsun. */
+@media (max-width: 860px) {
+  .birkan-hero-actions .birkan-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; background-position: left calc(100% - 8px); }
+  .birkan-navbar-name { display: inline-flex; align-items: center; min-height: 44px; }
+  .birkan-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+  .birkan-footer { padding-bottom: 18px; }
 }
